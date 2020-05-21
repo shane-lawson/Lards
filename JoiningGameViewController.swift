@@ -1,5 +1,5 @@
 //
-//  CreatingGameViewController.swift
+//  JoiningGameViewController.swift
 //  Lards
 //
 //  Created by Shane Lawson on 5/13/20.
@@ -8,36 +8,37 @@
 
 import UIKit
 
-class CreatingGameViewController: UIViewController, UITableViewDataSource {
-
+class JoiningGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+   
    // MARK: Injected Properties
    
    var game: LardGame!
-   var isCreating: Bool!
    
    //MARK: IBOutlets
    
    @IBOutlet weak var navBar: UINavigationItem!
    @IBOutlet weak var loadingLabel: UILabel!
+   @IBOutlet weak var titleBarActivityIndicator: UIActivityIndicatorView!
    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    @IBOutlet weak var playerTableView: UITableView!
    
    // MARK: Properties
    
+   var selectedHost: String?
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
       playerTableView.dataSource = self
-//      playerTableView.delegate = self
-
+      playerTableView.delegate = self
+      
       setLoading(true)
    }
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      game.subscribeToNotifications(of: [.foundPlayer, .addedPlayer, .startingGame], observer: self, selector: #selector(processNotifications(_:)))
-      game.startMultipeer(isCreating: isCreating)
-      setupUI()
+      game.subscribeToNotifications(of: [.foundHost, .addedPlayer], observer: self, selector: #selector(processNotifications(_:)))
+      game.startMultipeer(isCreating: false)
    }
    
    override func viewWillDisappear(_ animated: Bool) {
@@ -45,41 +46,35 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource {
       game.unsubscribeFromNotifications(self)
       game.stopMultipeer()
    }
-
+   
    @objc func cancel() {
       dismiss(animated: true, completion: nil)
    }
-   
-   func setupUI() {
-      navBar.title = isCreating ? "Creating Game" : "Joining Game"
-      navBar.rightBarButtonItem = isCreating ? UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.done)) : nil
-      navBar.leftBarButtonItem = isCreating ? UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel)) : nil
-      loadingLabel.text = isCreating ? "Waiting for players to join" : "Joining game"
-   }
 
    func setLoading(_ isLoading: Bool) {
-      activityIndicator.isHidden = !isLoading
+      if isLoading {
+         activityIndicator.startAnimating()
+      } else {
+         activityIndicator.stopAnimating()
+         titleBarActivityIndicator.startAnimating()
+      }
       loadingLabel.isHidden = !isLoading
       playerTableView.isHidden = isLoading
    }
-
+   
    @objc func processNotifications(_ notification: Notification) {
       typealias type = LardGame.NotificationType
       DispatchQueue.main.async { [unowned self] in
          switch notification.name {
-         case type.addedPlayer.name:
+         case type.foundHost.name:
             self.setLoading(false)
             self.playerTableView.reloadData()
-         case type.foundPlayer.name:
-            print("received foundPlayer notification")
-         case type.lostPlayer.name:
-            print("received lostPlayer notification")
-         case type.removedPlayer.name:
-            print("received removedPlayer notification")
+         case type.addedPlayer.name:
+            self.performSegue(withIdentifier: "moveToWaiting", sender: nil)
          case type.startingGame.name:
-            print("received startingGame notification")
+            self.performSegue(withIdentifier: "startGame", sender: nil)
          default:
-            print("Received notification of unknown type.")
+            print("Received notification which is unhandled in JoiningGameViewController")
          }
       }
    }
@@ -88,15 +83,23 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource {
       print("done tapped")
    }
    
-   /*
    // MARK: - Navigation
 
    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
+      game.unsubscribeFromNotifications(self)
+      switch segue.identifier {
+      case "moveToWaiting":
+         let waitingVC = segue.destination as! WaitingForGameTableViewController
+         waitingVC.game = game
+         waitingVC.host = selectedHost
+      case "startGame":
+         let gameVC = segue.destination as! GameViewController
+         gameVC.game = game
+      default:
+         break
+      }
    }
-   */
 
    // MARK: - UITableViewDataSource
    
@@ -105,25 +108,31 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource {
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return game.players.count
+      return game.foundHosts.count
    }
    
    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-      return "Players"
+      return "Hosts"
    }
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath)
-      cell.textLabel?.text = player(at: indexPath).displayName
+      cell.textLabel?.text = game.foundHosts[indexPath.row].displayName
+      cell.detailTextLabel?.textColor = .systemGray2
       return cell
    }
-   
-   func player(at indexPath: IndexPath) -> Player {
-      return game.players[indexPath.row]
-   }
-   
+
    // MARK: - UITableViewDelegate
    
-   
+   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      if selectedHost == nil {
+         let peerID = game.foundHosts[indexPath.row]
+         game.joinHost(with: peerID)
+         titleBarActivityIndicator.stopAnimating()
+         tableView.cellForRow(at: indexPath)?.detailTextLabel?.text = "Request Sent"
+         selectedHost = peerID.displayName
+      }
+      tableView.deselectRow(at: indexPath, animated: true)
+   }
    
 }

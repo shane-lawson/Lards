@@ -10,21 +10,37 @@ import UIKit
 
 class NewGameViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   let game = LardGame()
+   
+   override func viewDidLoad() {
+      super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-    
+      // Do any additional setup after loading the view.
+   }
 
-    /*
-    // MARK: - Navigation
+   @IBAction func joinGameTapped(_ sender: UIButton) {
+      performSegue(withIdentifier: "joinGame", sender: self)
+   }
+   
+   @IBAction func createGameTapped(_ sender: UIButton) {
+      performSegue(withIdentifier: "createGame", sender: self)
+   }
+   
+   // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      switch segue.identifier {
+      case "createGame":
+         if let loadingVC = segue.destination as? CreatingGameViewController {
+            loadingVC.game = game
+         }
+      case "joinGame":
+         if let loadingVC = segue.destination as? JoiningGameViewController {
+            loadingVC.game = game
+         }
+      default:
+         break
+      }
+   }
 
 }

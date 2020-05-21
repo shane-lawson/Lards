@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */; };
+		3410FBEE2475D635001E20B6 /* WaitingForGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410FBED2475D635001E20B6 /* WaitingForGameTableViewController.swift */; };
 		343EA210246C5EC5004D88D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA20F246C5EC5004D88D9 /* AppDelegate.swift */; };
 		343EA212246C5EC5004D88D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA211246C5EC5004D88D9 /* SceneDelegate.swift */; };
 		343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA213246C5EC5004D88D9 /* MainMenuViewController.swift */; };
@@ -21,10 +23,14 @@
 		343EA22F246C6B19004D88D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA22E246C6B18004D88D9 /* SettingsViewController.swift */; };
 		343EA231246C724D004D88D9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA230246C724D004D88D9 /* GameViewController.swift */; };
 		343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA232246C7262004D88D9 /* ScoringViewController.swift */; };
-		343EA235246C72FE004D88D9 /* LoadingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA234246C72FE004D88D9 /* LoadingGameViewController.swift */; };
+		343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */; };
+		3443CC33246C752700BD63C7 /* LardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CC32246C752700BD63C7 /* LardGame.swift */; };
+		3450544624761CFE00D60574 /* StartGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3450544524761CFE00D60574 /* StartGameObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiningGameViewController.swift; sourceTree = SOURCE_ROOT; };
+		3410FBED2475D635001E20B6 /* WaitingForGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForGameTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		343EA20C246C5EC5004D88D9 /* Lards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		343EA20F246C5EC5004D88D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		343EA211246C5EC5004D88D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,7 +47,9 @@
 		343EA22E246C6B18004D88D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		343EA230246C724D004D88D9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		343EA232246C7262004D88D9 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
-		343EA234246C72FE004D88D9 /* LoadingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingGameViewController.swift; sourceTree = "<group>"; };
+		343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGameViewController.swift; sourceTree = "<group>"; };
+		3443CC32246C752700BD63C7 /* LardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardGame.swift; sourceTree = "<group>"; };
+		3450544524761CFE00D60574 /* StartGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,10 +96,12 @@
 		343EA236246C7333004D88D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3410FBED2475D635001E20B6 /* WaitingForGameTableViewController.swift */,
+				3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */,
 				343EA213246C5EC5004D88D9 /* MainMenuViewController.swift */,
 				343EA230246C724D004D88D9 /* GameViewController.swift */,
 				343EA232246C7262004D88D9 /* ScoringViewController.swift */,
-				343EA234246C72FE004D88D9 /* LoadingGameViewController.swift */,
+				343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */,
 				343EA22A246C6AED004D88D9 /* NewGameViewController.swift */,
 				343EA22C246C6AF6004D88D9 /* LoadGameViewController.swift */,
 				343EA22E246C6B18004D88D9 /* SettingsViewController.swift */,
@@ -113,9 +123,19 @@
 		343EA238246C7359004D88D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3450544424761CD900D60574 /* Transmit Objects */,
 				343EA218246C5EC5004D88D9 /* Lards.xcdatamodeld */,
+				3443CC32246C752700BD63C7 /* LardGame.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3450544424761CD900D60574 /* Transmit Objects */ = {
+			isa = PBXGroup;
+			children = (
+				3450544524761CFE00D60574 /* StartGameObject.swift */,
+			);
+			path = "Transmit Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,17 +210,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				343EA231246C724D004D88D9 /* GameViewController.swift in Sources */,
-				343EA235246C72FE004D88D9 /* LoadingGameViewController.swift in Sources */,
+				3443CC33246C752700BD63C7 /* LardGame.swift in Sources */,
+				343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */,
 				343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */,
 				343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */,
 				343EA229246C6086004D88D9 /* ViewConstants.swift in Sources */,
 				343EA21A246C5EC5004D88D9 /* Lards.xcdatamodeld in Sources */,
 				343EA22B246C6AED004D88D9 /* NewGameViewController.swift in Sources */,
 				343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */,
+				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
 				343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */,
 				343EA210246C5EC5004D88D9 /* AppDelegate.swift in Sources */,
+				3410FBEE2475D635001E20B6 /* WaitingForGameTableViewController.swift in Sources */,
 				343EA212246C5EC5004D88D9 /* SceneDelegate.swift in Sources */,
 				343EA22F246C6B19004D88D9 /* SettingsViewController.swift in Sources */,
+				3450544624761CFE00D60574 /* StartGameObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,10 @@ import UIKit
 
 class GameViewController: UIViewController {
 
+   // MARK: Injected Properties
+   
+   var game: LardGame!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
