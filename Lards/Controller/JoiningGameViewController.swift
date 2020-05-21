@@ -90,7 +90,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
       game.unsubscribeFromNotifications(self)
       switch segue.identifier {
       case "moveToWaiting":
-         let waitingVC = segue.destination as! WaitingForGameTableViewController
+         let waitingVC = segue.destination as! WaitingForGameViewController
          waitingVC.game = game
          waitingVC.host = selectedHost
       case "startGame":
