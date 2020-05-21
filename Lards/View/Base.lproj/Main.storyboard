@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQo-bV-Cz0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rr4-Tw-xNt">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -395,14 +395,30 @@
                     <view key="view" contentMode="scaleToFill" id="jWk-K8-r2e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-yw-ozA" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="137.66666666666666" y="618" width="100" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="GKV-fj-be3"/>
+                                    <constraint firstAttribute="height" constant="140" id="WfE-xU-lb3"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="K1W-rm-PWq" firstAttribute="bottom" secondItem="ghR-yw-ozA" secondAttribute="bottom" constant="20" id="4Xc-9s-NeZ"/>
+                            <constraint firstItem="ghR-yw-ozA" firstAttribute="centerX" secondItem="K1W-rm-PWq" secondAttribute="centerX" id="lRB-ib-IRG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="K1W-rm-PWq"/>
                     </view>
                     <navigationItem key="navigationItem" id="snZ-WL-wac"/>
+                    <connections>
+                        <outlet property="deckView" destination="ghR-yw-ozA" id="dPx-B9-oar"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olu-Xi-1wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="2147"/>
+            <point key="canvasLocation" x="100" y="2146.5517241379312"/>
         </scene>
         <!--Joining Game View Controller-->
         <scene sceneID="aWe-1A-FME">
