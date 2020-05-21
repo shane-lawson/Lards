@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340D24C62476F113009A3227 /* CardPlayedPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24C52476F113009A3227 /* CardPlayedPayload.swift */; };
+		340D24C82476F126009A3227 /* ReshuffledDeckPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24C72476F126009A3227 /* ReshuffledDeckPayload.swift */; };
+		340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24C92476FA26009A3227 /* PlayingCardView.swift */; };
 		3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */; };
 		3410FBEE2475D635001E20B6 /* WaitingForGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410FBED2475D635001E20B6 /* WaitingForGameTableViewController.swift */; };
 		343EA210246C5EC5004D88D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA20F246C5EC5004D88D9 /* AppDelegate.swift */; };
@@ -25,10 +28,14 @@
 		343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA232246C7262004D88D9 /* ScoringViewController.swift */; };
 		343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */; };
 		3443CC33246C752700BD63C7 /* LardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CC32246C752700BD63C7 /* LardGame.swift */; };
-		3450544624761CFE00D60574 /* StartGameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3450544524761CFE00D60574 /* StartGameObject.swift */; };
+		3450544624761CFE00D60574 /* StartGamePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3450544524761CFE00D60574 /* StartGamePayload.swift */; };
+		345054482476EC2A00D60574 /* LardPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345054472476EC2A00D60574 /* LardPacket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		340D24C52476F113009A3227 /* CardPlayedPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPlayedPayload.swift; sourceTree = "<group>"; };
+		340D24C72476F126009A3227 /* ReshuffledDeckPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReshuffledDeckPayload.swift; sourceTree = "<group>"; };
+		340D24C92476FA26009A3227 /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayingCardView.swift; path = Lards/View/PlayingCardView.swift; sourceTree = SOURCE_ROOT; };
 		3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiningGameViewController.swift; sourceTree = SOURCE_ROOT; };
 		3410FBED2475D635001E20B6 /* WaitingForGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingForGameTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		343EA20C246C5EC5004D88D9 /* Lards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lards.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,7 +56,8 @@
 		343EA232246C7262004D88D9 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGameViewController.swift; sourceTree = "<group>"; };
 		3443CC32246C752700BD63C7 /* LardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardGame.swift; sourceTree = "<group>"; };
-		3450544524761CFE00D60574 /* StartGameObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameObject.swift; sourceTree = "<group>"; };
+		3450544524761CFE00D60574 /* StartGamePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGamePayload.swift; sourceTree = "<group>"; };
+		345054472476EC2A00D60574 /* LardPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardPacket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +134,7 @@
 				3450544424761CD900D60574 /* Transmit Objects */,
 				343EA218246C5EC5004D88D9 /* Lards.xcdatamodeld */,
 				3443CC32246C752700BD63C7 /* LardGame.swift */,
+				340D24C92476FA26009A3227 /* PlayingCardView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -133,7 +142,10 @@
 		3450544424761CD900D60574 /* Transmit Objects */ = {
 			isa = PBXGroup;
 			children = (
-				3450544524761CFE00D60574 /* StartGameObject.swift */,
+				345054472476EC2A00D60574 /* LardPacket.swift */,
+				3450544524761CFE00D60574 /* StartGamePayload.swift */,
+				340D24C52476F113009A3227 /* CardPlayedPayload.swift */,
+				340D24C72476F126009A3227 /* ReshuffledDeckPayload.swift */,
 			);
 			path = "Transmit Objects";
 			sourceTree = "<group>";
@@ -213,6 +225,7 @@
 				3443CC33246C752700BD63C7 /* LardGame.swift in Sources */,
 				343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */,
 				343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */,
+				340D24C82476F126009A3227 /* ReshuffledDeckPayload.swift in Sources */,
 				343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */,
 				343EA229246C6086004D88D9 /* ViewConstants.swift in Sources */,
 				343EA21A246C5EC5004D88D9 /* Lards.xcdatamodeld in Sources */,
@@ -220,11 +233,14 @@
 				343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */,
 				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
 				343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */,
+				345054482476EC2A00D60574 /* LardPacket.swift in Sources */,
+				340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */,
 				343EA210246C5EC5004D88D9 /* AppDelegate.swift in Sources */,
 				3410FBEE2475D635001E20B6 /* WaitingForGameTableViewController.swift in Sources */,
 				343EA212246C5EC5004D88D9 /* SceneDelegate.swift in Sources */,
+				340D24C62476F113009A3227 /* CardPlayedPayload.swift in Sources */,
 				343EA22F246C6B19004D88D9 /* SettingsViewController.swift in Sources */,
-				3450544624761CFE00D60574 /* StartGameObject.swift in Sources */,
+				3450544624761CFE00D60574 /* StartGamePayload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

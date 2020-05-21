@@ -87,16 +87,11 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    
    func startGame() {
       if isCreator {
-         let startObject = StartGameObject(start: true)
+         let packet = LardPacket(.startGame)
          do {
-            let encodedStartObject = try JSONEncoder().encode(startObject)
-            do {
-               try broadcast(encodedStartObject)
-            } catch {
-               print("Error sending to session: \(error.localizedDescription)")
-            }
+            try broadcast(packet.encoded!)
          } catch {
-            print("Error encoding start object: \(error.localizedDescription)")
+            print("Error sending to session: \(error.localizedDescription)")
          }
       }
       
@@ -155,10 +150,17 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    
    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
       do {
-         _ = try JSONDecoder().decode(StartGameObject.self, from: data)
-         self.startGame()
+         let packet = try JSONDecoder().decode(LardPacket.self, from: data)
+         switch packet.type {
+         case .startGame:
+            self.startGame()
+         case .cardPlayed:
+            break
+         case .reshuffledDeck:
+            break
+         }
       } catch {
-          print("Error decoding start object: \(error.localizedDescription)")
+          print("Error decoding LardPacket: \(error.localizedDescription)")
       }
    }
    

@@ -1,5 +1,5 @@
 //
-//  StartGameObject.swift
+//  StartGamePayload.swift
 //  Lards
 //
 //  Created by Shane Lawson on 5/20/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct StartGameObject: Codable {
+struct StartGamePayload: Codable {
    let start: Bool
 }
