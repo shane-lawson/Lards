@@ -17,16 +17,57 @@ class GameViewController: UIViewController {
    // MARK: IBOutlets
    
    @IBOutlet weak var deckView: PlayingCardView!
-
+   @IBOutlet weak var myCard: PlayingCardView!
+   @IBOutlet weak var theirCard: PlayingCardView!
+   
+   var deckCenter: CGPoint!
+   var newCoords1: CGPoint!
+   
    override func viewDidLoad() {
       super.viewDidLoad()
 
-      deckView.rank = .two
+      myCard.rank = .none
+      theirCard.rank = .none
+      
+      deckView.rank = .nine
+      deckView.suit = .hearts
       deckView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deckTapped)))
+      deckCenter = deckView.center
    }
 
    @objc func deckTapped() {
-      print("Deck tapped")
+//      let newCard = PlayingCardView()
+//      newCard.rank = .two
+//      newCard.suit = .clubs
+//      view.addSubview(newCard)
+//      view.bringSubviewToFront(newCard)
+//      newCard.center = deckCenter
+      
+//      myCard.superview.remove
+      
+//      UIViewPropertyAnimator.runningPropertyAnimator(
+//         withDuration: 0.5,
+//         delay: 0,
+//         options: [.curveEaseInOut],
+//         animations: {
+//            self.deckView.center = self.myCard.center
+//
+//         },
+//         completion: { (animatingPosition) in
+//            self.myCard = self.deckView
+//            self.deckView.center = self.deckCenter
+//      })
+      newCoords1 = self.myCard.superview!.convert(self.myCard.center, to: self.view)
+      self.deckView.move(to: newCoords1, duration: 1, options: [.curveEaseInOut])
+      UIView.transition(
+         with: self.deckView,
+         duration: 0.5,
+         options: [.transitionFlipFromLeft],
+         animations: {
+            self.deckView.isFaceUp = !self.deckView.isFaceUp
+      },
+         completion: nil)
+
    }
 
    /*

@@ -44,6 +44,9 @@ class PlayingCardView: UIView {
       //set border and fill colors or shaded card "shape" if none
       if rank == Rank.none {
          UIColor.black.withAlphaComponent(0.15).setFill()
+         path.stroke()
+         path.fill()
+         return
       } else {
          UIColor.gray.setStroke()
          UIColor.white.setFill()
@@ -67,24 +70,21 @@ class PlayingCardView: UIView {
    override func layoutSubviews() {
       super.layoutSubviews()
       
-      if isFaceUp {
-         configureCornerLabel(upperLeftCornerLabel)
-         configureCornerLabel(lowerRightCornerLabel)
-         
-         //position corner labels appropriately
-         upperLeftCornerLabel.frame.origin = bounds.origin.offsetBy(dx: cornerOffset, dy: cornerOffset)
-         
-         lowerRightCornerLabel.frame.origin = CGPoint(x: bounds.maxX, y: bounds.maxY)
-            .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
-            .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
-         lowerRightCornerLabel.transform = CGAffineTransform(rotationAngle: .pi)
-      } else {
-         configureWeatherIcon(weatherIcon)
-         
-         //position weather icon on card back
-         weatherIcon.center = CGPoint(x: bounds.midX, y: bounds.midY)
-      }
+      configureCornerLabel(upperLeftCornerLabel)
+      configureCornerLabel(lowerRightCornerLabel)
       
+      //position corner labels appropriately
+      upperLeftCornerLabel.frame.origin = bounds.origin.offsetBy(dx: cornerOffset, dy: cornerOffset)
+      
+      lowerRightCornerLabel.frame.origin = CGPoint(x: bounds.maxX, y: bounds.maxY)
+         .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
+         .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
+      lowerRightCornerLabel.transform = CGAffineTransform(rotationAngle: .pi)
+      
+      configureWeatherIcon(weatherIcon)
+      
+      //position weather icon on card back
+      weatherIcon.center = CGPoint(x: bounds.midX, y: bounds.midY)
    }
    
    // MARK: Helpers
@@ -126,7 +126,7 @@ class PlayingCardView: UIView {
       let image = UIImage(systemName: "cloud.sun")
       imageView.image = image!.withTintColor(.white, renderingMode: .alwaysOriginal)
       imageView.frame.size = cardBackIconSize
-      
+      imageView.isHidden = isFaceUp || rank == Rank.none
    }
 }
    
@@ -148,7 +148,7 @@ extension PlayingCardView {
       [0,2,3,3,2,0]
    ]
    
-   //these constants and structure come from the Stanford course "Designing iOS 11 Apps with Swift" taught by Paul Hegarty and available online
+   //some of these constants and structure come from the Stanford course "Designing iOS 11 Apps with Swift" taught by Paul Hegarty and available online
    private struct SizeRatio {
       static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
       static let pipFontSizeToBoundsHeight: CGFloat = 0.15

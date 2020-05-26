@@ -17,7 +17,6 @@
 		343EA212246C5EC5004D88D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA211246C5EC5004D88D9 /* SceneDelegate.swift */; };
 		343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA213246C5EC5004D88D9 /* MainMenuViewController.swift */; };
 		343EA217246C5EC5004D88D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343EA215246C5EC5004D88D9 /* Main.storyboard */; };
-		343EA21A246C5EC5004D88D9 /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 343EA218246C5EC5004D88D9 /* Lards.xcdatamodeld */; };
 		343EA21C246C5EC7004D88D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 343EA21B246C5EC7004D88D9 /* Assets.xcassets */; };
 		343EA21F246C5EC7004D88D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 343EA21D246C5EC7004D88D9 /* LaunchScreen.storyboard */; };
 		343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA226246C5F9A004D88D9 /* MenuButton.swift */; };
@@ -31,6 +30,8 @@
 		3443CC33246C752700BD63C7 /* LardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CC32246C752700BD63C7 /* LardGame.swift */; };
 		3450544624761CFE00D60574 /* StartGamePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3450544524761CFE00D60574 /* StartGamePayload.swift */; };
 		345054482476EC2A00D60574 /* LardPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345054472476EC2A00D60574 /* LardPacket.swift */; };
+		34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650C79247838860056FB14 /* UIView+Animations.swift */; };
+		34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +46,6 @@
 		343EA211246C5EC5004D88D9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		343EA213246C5EC5004D88D9 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		343EA216246C5EC5004D88D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		343EA219246C5EC5004D88D9 /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 		343EA21B246C5EC7004D88D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		343EA21E246C5EC7004D88D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		343EA220246C5EC7004D88D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +60,8 @@
 		3443CC32246C752700BD63C7 /* LardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardGame.swift; sourceTree = "<group>"; };
 		3450544524761CFE00D60574 /* StartGamePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGamePayload.swift; sourceTree = "<group>"; };
 		345054472476EC2A00D60574 /* LardPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardPacket.swift; sourceTree = "<group>"; };
+		34650C79247838860056FB14 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		34E0F729247D67E900F63D9F /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				343EA226246C5F9A004D88D9 /* MenuButton.swift */,
 				343EA228246C6086004D88D9 /* ViewConstants.swift */,
 				343EA215246C5EC5004D88D9 /* Main.storyboard */,
+				34650C79247838860056FB14 /* UIView+Animations.swift */,
 				343EA21D246C5EC7004D88D9 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -134,8 +137,8 @@
 		343EA238246C7359004D88D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */,
 				3450544424761CD900D60574 /* Transmit Objects */,
-				343EA218246C5EC5004D88D9 /* Lards.xcdatamodeld */,
 				3443CC32246C752700BD63C7 /* LardGame.swift */,
 				340D24CB2476FB0E009A3227 /* PlayingCard.swift */,
 			);
@@ -231,13 +234,14 @@
 				340D24C82476F126009A3227 /* ReshuffledDeckPayload.swift in Sources */,
 				343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */,
 				343EA229246C6086004D88D9 /* ViewConstants.swift in Sources */,
-				343EA21A246C5EC5004D88D9 /* Lards.xcdatamodeld in Sources */,
 				343EA22B246C6AED004D88D9 /* NewGameViewController.swift in Sources */,
 				343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */,
+				34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */,
 				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
 				343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */,
 				345054482476EC2A00D60574 /* LardPacket.swift in Sources */,
 				340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */,
+				34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */,
 				343EA210246C5EC5004D88D9 /* AppDelegate.swift in Sources */,
 				3410FBEE2475D635001E20B6 /* WaitingForGameViewController.swift in Sources */,
 				340D24CC2476FB0E009A3227 /* PlayingCard.swift in Sources */,
@@ -444,12 +448,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		343EA218246C5EC5004D88D9 /* Lards.xcdatamodeld */ = {
+		34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				343EA219246C5EC5004D88D9 /* Lards.xcdatamodel */,
+				34E0F729247D67E900F63D9F /* Lards.xcdatamodel */,
 			);
-			currentVersion = 343EA219246C5EC5004D88D9 /* Lards.xcdatamodel */;
+			currentVersion = 34E0F729247D67E900F63D9F /* Lards.xcdatamodel */;
 			path = Lards.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

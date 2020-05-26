@@ -403,10 +403,31 @@
                                     <constraint firstAttribute="height" constant="140" id="WfE-xU-lb3"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LSi-5K-kTK">
+                                <rect key="frame" x="137.66666666666666" y="261" width="100" height="300"/>
+                                <subviews>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvq-rM-haq" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="CpT-p7-oNk"/>
+                                            <constraint firstAttribute="height" constant="140" id="y2e-dF-0cS"/>
+                                        </constraints>
+                                    </view>
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4O-xQ-9jM" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="160" width="100" height="140"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="QSc-AE-cU9"/>
+                                            <constraint firstAttribute="width" constant="100" id="dG7-eE-JEB"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="K1W-rm-PWq" firstAttribute="bottom" secondItem="ghR-yw-ozA" secondAttribute="bottom" constant="20" id="4Xc-9s-NeZ"/>
+                            <constraint firstItem="LSi-5K-kTK" firstAttribute="centerX" secondItem="K1W-rm-PWq" secondAttribute="centerX" id="M1w-lS-vRZ"/>
+                            <constraint firstItem="LSi-5K-kTK" firstAttribute="centerY" secondItem="K1W-rm-PWq" secondAttribute="centerY" id="e3M-Hh-iiy"/>
                             <constraint firstItem="ghR-yw-ozA" firstAttribute="centerX" secondItem="K1W-rm-PWq" secondAttribute="centerX" id="lRB-ib-IRG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K1W-rm-PWq"/>
@@ -414,6 +435,8 @@
                     <navigationItem key="navigationItem" id="snZ-WL-wac"/>
                     <connections>
                         <outlet property="deckView" destination="ghR-yw-ozA" id="dPx-B9-oar"/>
+                        <outlet property="myCard" destination="d4O-xQ-9jM" id="Nzx-W2-pqL"/>
+                        <outlet property="theirCard" destination="gvq-rM-haq" id="cBW-5Y-NfQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olu-Xi-1wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
