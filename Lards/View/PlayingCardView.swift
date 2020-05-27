@@ -15,6 +15,7 @@ class PlayingCardView: UIView {
    var rank: Rank = .two { didSet { setNeedsDisplay(); setNeedsLayout() } }
    var suit: Suit = .clubs { didSet { setNeedsDisplay(); setNeedsLayout() } }
    var isFaceUp: Bool = false { didSet { setNeedsDisplay(); setNeedsLayout() } }
+   static var weather: WeatherObject? = nil
    
    // MARK: Computed Properties
    
@@ -121,12 +122,50 @@ class PlayingCardView: UIView {
    }
    
    private func configureWeatherIcon(_ imageView: UIImageView) {
-      //TODO: Set icon based on weather
-//      imageView.image = self.image
-      let image = UIImage(systemName: "cloud.sun")
-      imageView.image = image!.withTintColor(.white, renderingMode: .alwaysOriginal)
-      imageView.frame.size = cardBackIconSize
-      imageView.isHidden = isFaceUp || rank == Rank.none
+      var image: UIImage
+      if let weather = PlayingCardView.weather {
+         switch weather.id {
+         case 200, 201, 202, 230, 231, 232:
+            image = UIImage(systemName: "cloud.bolt.rain")!
+         case 211, 212:
+            image = UIImage(systemName: "cloud.bolt")!
+         case 210, 221:
+            image = UIImage(systemName: weather.isDay ? "cloud.sun.bolt" : "cloud.moon.bolt")!
+         case 300, 301, 302, 310, 311, 312:
+            image = UIImage(systemName: "cloud.drizzle")!
+         case 500, 501, 520, 521:
+            image = UIImage(systemName: "cloud.rain")!
+         case 502, 503, 504, 522:
+            image = UIImage(systemName: "cloud.heavyrain")!
+         case 531:
+            image = UIImage(systemName: weather.isDay ? "cloud.sun.rain" : "cloud.moon.rain")!
+         case 511, 611, 612, 613, 615, 616:
+            image = UIImage(systemName: "cloud.sleet")!
+         case 600, 601, 602, 620, 621, 622:
+            image = UIImage(systemName: "cloud.snow")!
+         case 711, 721:
+            image = UIImage(systemName: "sun.haze")!
+         case 731, 751, 761, 762:
+            image = UIImage(systemName: "sun.dust")!
+         case 701, 741:
+            image = UIImage(systemName: "cloud.fog")!
+         case 771:
+            image = UIImage(systemName: "wind")!
+         case 800:
+            image = UIImage(systemName: weather.isDay ? "sun.max" : "moon.stars")!
+         case 801, 802:
+            image = UIImage(systemName: weather.isDay ? "cloud.sun" : "cloud.moon")!
+         case 803, 804:
+            image = UIImage(systemName: "cloud")!
+         default:
+            image = UIImage(systemName: weather.isDay ? "sun.max" : "moon")!
+         }
+         imageView.image = image.withTintColor(.white, renderingMode: .alwaysOriginal)
+         imageView.frame.size = cardBackIconSize
+         imageView.isHidden = isFaceUp || rank == Rank.none
+      } else {
+         imageView.image = nil
+      }
    }
 }
    

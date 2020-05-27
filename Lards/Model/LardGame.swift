@@ -6,6 +6,7 @@
 //  Copyright © 2020 Shane Lawson. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 import MultipeerConnectivity
 import os
@@ -21,7 +22,7 @@ class Player {
    }
 }
 
-class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate {
+class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, CLLocationManagerDelegate {
    let serviceType = "lards-newgame"
    enum NotificationType: String {
       case foundHost
@@ -30,6 +31,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       case removedPlayer
       case startingGame
       case receivedRequest
+      case refreshedLocation
       
       var name: NSNotification.Name {
          return NSNotification.Name(self.rawValue)
@@ -41,11 +43,17 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    var foundHosts: [MCPeerID]
    var isInSetup: Bool
    var isCreator = false
+   var location: CLLocation?
+   var isLocationEnabled: Bool {
+      CLLocationManager.locationServicesEnabled()
+   }
+   var weather: WeatherObject?
    
    let peerID: MCPeerID
    let session: MCSession
    let advertiser: MCNearbyServiceAdvertiser
    let browser: MCNearbyServiceBrowser
+   let locationManager: CLLocationManager
    
    override init() {
       players = [Player]()
@@ -57,12 +65,14 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       session = MCSession(peer: peerID)
       advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
       browser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType)
-
+      locationManager = CLLocationManager()
+      
       super.init()
       
       session.delegate = self
       browser.delegate = self
       advertiser.delegate = self
+      locationManager.delegate = self
       
    }
    
@@ -146,6 +156,11 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       try session.send(data, toPeers: session.connectedPeers, with: .reliable)
    }
    
+   func getLocation() {
+      locationManager.requestWhenInUseAuthorization()
+      locationManager.requestLocation()
+   }
+   
    // MARK: - MCSessionDelegate
    
    func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
@@ -174,6 +189,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
          print("connected to \(peerID.displayName)")
          players.append(Player(peerID: peerID))
          postNotification(of: .addedPlayer)
+         getLocation()
       @unknown default:
          fatalError("unknown didChange state")
       }
@@ -223,4 +239,25 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       joinRequests[peerID] = invitationHandler
    }
 
+   // MARK: - CLLocationManagerDelegate
+   
+   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+      location = locations.last
+      print("updated location")
+      OpenWeatherMapAPI.getCurrentWeather(at: location!.coordinate) { (weather, error) in
+         print("weather returned")
+         self.weather = weather!
+         self.postNotification(of: .refreshedLocation)
+      }
+   }
+
+   func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+      print("location error")
+      switch (error as! CLError).code {
+      case .denied:
+         manager.stopUpdatingLocation()
+      default:
+         break
+      }
+   }
 }

@@ -33,6 +33,8 @@ class GameViewController: UIViewController {
       deckView.suit = .hearts
       deckView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deckTapped)))
       deckCenter = deckView.center
+      
+      game.subscribeToNotifications(of: [.refreshedLocation], observer: self, selector: #selector(updateWeatherOnCards))
    }
 
    @objc func deckTapped() {
@@ -68,6 +70,10 @@ class GameViewController: UIViewController {
       },
          completion: nil)
 
+   }
+   
+   @objc func updateWeatherOnCards() {
+      PlayingCardView.weather = game.weather
    }
 
    /*
