@@ -25,7 +25,7 @@ class LardsUserDefaults {
          UserDefaults.standard.set(UIDevice.current.name, forKey: Keys.displayName.rawValue)
          UserDefaults.standard.set(true, forKey: Keys.haptics.rawValue)
          UserDefaults.standard.set(true, forKey: Keys.gestures.rawValue)
-         archiveAndSet(color: UIColor.systemGreen)
+         archiveAndSet(color: UIColor.systemPurple)
          UserDefaults.standard.synchronize()
       }
    }

@@ -15,6 +15,7 @@ class PlayingCardView: UIView {
    var rank: Rank = .two { didSet { setNeedsDisplay(); setNeedsLayout() } }
    var suit: Suit = .clubs { didSet { setNeedsDisplay(); setNeedsLayout() } }
    var isFaceUp: Bool = false { didSet { setNeedsDisplay(); setNeedsLayout() } }
+   var willGetWeather: Bool = false
    static var weather: WeatherObject? = nil
    
    // MARK: Computed Properties
@@ -82,10 +83,26 @@ class PlayingCardView: UIView {
          .offsetBy(dx: -lowerRightCornerLabel.frame.size.width, dy: -lowerRightCornerLabel.frame.size.height)
       lowerRightCornerLabel.transform = CGAffineTransform(rotationAngle: .pi)
       
+      if willGetWeather {
+         configureWeatherIcon(weatherIcon)
+         
+         //position weather icon on card back
+         weatherIcon.center = CGPoint(x: bounds.midX, y: bounds.midY)
+      }
+   }
+   
+   func startAnimatingWeatherIcon() {
+      let rotation = CABasicAnimation(keyPath: "transform.rotation")
+      rotation.fromValue = 0
+      rotation.toValue = 2 * Double.pi
+      rotation.duration = 1.5
+      rotation.repeatCount = 30/1.5
+      weatherIcon.layer.add(rotation, forKey: "spin")
+   }
+   
+   func stopAnimatingWeatherIcon() {
       configureWeatherIcon(weatherIcon)
-      
-      //position weather icon on card back
-      weatherIcon.center = CGPoint(x: bounds.midX, y: bounds.midY)
+      weatherIcon.layer.removeAllAnimations()
    }
    
    // MARK: Helpers
@@ -122,7 +139,7 @@ class PlayingCardView: UIView {
    }
    
    private func configureWeatherIcon(_ imageView: UIImageView) {
-      var image: UIImage
+      var image: UIImage? = UIImage(systemName: "sun.max")
       if let weather = PlayingCardView.weather {
          switch weather.id {
          case 200, 201, 202, 230, 231, 232:
@@ -160,12 +177,14 @@ class PlayingCardView: UIView {
          default:
             image = UIImage(systemName: weather.isDay ? "sun.max" : "moon")!
          }
-         imageView.image = image.withTintColor(.white, renderingMode: .alwaysOriginal)
-         imageView.frame.size = cardBackIconSize
-         imageView.isHidden = isFaceUp || rank == Rank.none
       } else {
-         imageView.image = nil
+         startAnimatingWeatherIcon()
       }
+      UIView.transition(with: self, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+         imageView.image = image?.withTintColor(.white, renderingMode: .alwaysOriginal)
+      })
+      imageView.frame.size = cardBackIconSize
+      imageView.isHidden = isFaceUp || rank == Rank.none
    }
 }
    

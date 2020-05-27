@@ -31,10 +31,13 @@ class GameViewController: UIViewController {
       
       deckView.rank = .nine
       deckView.suit = .hearts
+      deckView.willGetWeather = game.isLocationEnabled
       deckView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deckTapped)))
       deckCenter = deckView.center
       
-      game.subscribeToNotifications(of: [.refreshedLocation], observer: self, selector: #selector(updateWeatherOnCards))
+      if game.isLocationEnabled {
+         game.subscribeToNotifications(of: [.refreshedLocation], observer: self, selector: #selector(updateWeatherOnCards))
+      }
    }
 
    @objc func deckTapped() {
@@ -73,7 +76,10 @@ class GameViewController: UIViewController {
    }
    
    @objc func updateWeatherOnCards() {
-      PlayingCardView.weather = game.weather
+      DispatchQueue.main.async {
+         PlayingCardView.weather = self.game.weather
+         self.deckView.stopAnimatingWeatherIcon()
+      }
    }
 
    /*
