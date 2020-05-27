@@ -63,7 +63,7 @@ class PlayingCardView: UIView {
          //TODO: draw card back
          let backRect = CGRect(origin: bounds.origin.offsetBy(dx: cardBackBorderWidth, dy: cardBackBorderWidth), size: CGSize(width: bounds.width - 2*cardBackBorderWidth, height: bounds.height - 2*cardBackBorderWidth))
          let path = UIBezierPath(rect: backRect)
-         UIColor.systemTeal.setFill()
+         LardsUserDefaults.accentColor.setFill()
          path.fill()
       }
    }

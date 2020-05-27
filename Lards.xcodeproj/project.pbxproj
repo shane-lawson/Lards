@@ -32,7 +32,7 @@
 		3450544624761CFE00D60574 /* StartGamePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3450544524761CFE00D60574 /* StartGamePayload.swift */; };
 		345054482476EC2A00D60574 /* LardPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345054472476EC2A00D60574 /* LardPacket.swift */; };
 		34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650C79247838860056FB14 /* UIView+Animations.swift */; };
-		34C18F33247ED86B00DA24A7 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C18F32247ED86B00DA24A7 /* UserDefaults.swift */; };
+		34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */; };
 		34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */; };
 		34E0F730247D968E00F63D9F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E0F72F247D968E00F63D9F /* Keys.plist */; };
 		34E0F732247D9ADE00F63D9F /* OpenWeatherMapAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F731247D9ADE00F63D9F /* OpenWeatherMapAPI.swift */; };
@@ -67,7 +67,7 @@
 		3450544524761CFE00D60574 /* StartGamePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGamePayload.swift; sourceTree = "<group>"; };
 		345054472476EC2A00D60574 /* LardPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardPacket.swift; sourceTree = "<group>"; };
 		34650C79247838860056FB14 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
-		34C18F32247ED86B00DA24A7 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardsUserDefaults.swift; sourceTree = "<group>"; };
 		34E0F729247D67E900F63D9F /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 		34E0F72F247D968E00F63D9F /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		34E0F731247D9ADE00F63D9F /* OpenWeatherMapAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapAPI.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 				3443CC32246C752700BD63C7 /* LardGame.swift */,
 				340D24CB2476FB0E009A3227 /* PlayingCard.swift */,
 				34E0F733247D9AE600F63D9F /* OpenWeatherMapAPI */,
-				34C18F32247ED86B00DA24A7 /* UserDefaults.swift */,
+				34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 				3443CC33246C752700BD63C7 /* LardGame.swift in Sources */,
 				343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */,
 				343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */,
-				34C18F33247ED86B00DA24A7 /* UserDefaults.swift in Sources */,
+				34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */,
 				340D24C82476F126009A3227 /* ReshuffledDeckPayload.swift in Sources */,
 				343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */,
 				343EA229246C6086004D88D9 /* ViewConstants.swift in Sources */,

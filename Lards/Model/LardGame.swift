@@ -38,6 +38,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       }
    }
    
+   
    var players: [Player]
    var joinRequests: [MCPeerID: (Bool, MCSession?) -> Void]
    var foundHosts: [MCPeerID]
@@ -60,7 +61,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       joinRequests = [MCPeerID: (Bool, MCSession?) -> Void]()
       foundHosts = [MCPeerID]()
       isInSetup = true
-      peerID = MCPeerID(displayName: UIDevice.current.name)
+      peerID = LardsUserDefaults.peerID
 //      session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
       session = MCSession(peer: peerID)
       advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)

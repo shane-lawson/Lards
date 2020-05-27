@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cjA-Hd-Bag">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQo-bV-Cz0">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -188,13 +188,13 @@
         <!--Settings-->
         <scene sceneID="7KA-wb-QU2">
             <objects>
-                <tableViewController id="cav-k1-SFn" sceneMemberID="viewController">
+                <tableViewController id="cav-k1-SFn" customClass="SettingsViewController" customModule="Lards" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Tp0-LA-b5J">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Name" id="Ej5-Y6-3iO">
+                            <tableViewSection headerTitle="Name" footerTitle="Name should contain at least 2 characters." id="Ej5-Y6-3iO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="Ei6-z7-7yg">
                                         <rect key="frame" x="0.0" y="55.333332061767578" width="375" height="54"/>
@@ -209,11 +209,14 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zRH-CR-6R7">
                                                             <rect key="frame" x="0.0" y="2" width="264" height="34"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" autocorrectionType="yes"/>
                                                         </textField>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEL-dD-xWv">
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEL-dD-xWv">
                                                             <rect key="frame" x="284" y="4" width="51" height="30"/>
                                                             <state key="normal" title="Update"/>
+                                                            <connections>
+                                                                <action selector="updateName:" destination="cav-k1-SFn" eventType="touchUpInside" id="Zpq-bi-JCO"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
@@ -231,7 +234,7 @@
                             <tableViewSection headerTitle="Capabilities" id="f0m-wb-f9v">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="T6d-Zu-nGc">
-                                        <rect key="frame" x="0.0" y="165.33333206176758" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="177.33333206176758" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T6d-Zu-nGc" id="caX-au-iyM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
@@ -248,6 +251,10 @@
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2l-iR-i0V">
                                                             <rect key="frame" x="286" y="3.6666666666666643" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="toggleGestures:" destination="cav-k1-SFn" eventType="valueChanged" id="DXO-uh-J66"/>
+                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="MKO-F9-XiR"/>
+                                                            </connections>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
@@ -261,7 +268,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="bsM-L7-ACr">
-                                        <rect key="frame" x="0.0" y="219.33333206176758" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="231.33333206176758" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bsM-L7-ACr" id="SbS-5f-NZ8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
@@ -278,6 +285,9 @@
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYD-2c-Kes">
                                                             <rect key="frame" x="286" y="3.6666666666666643" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="9HI-aa-QiT"/>
+                                                            </connections>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
@@ -299,6 +309,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="5XA-uF-OEe"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="zRH-CR-6R7" id="xPY-Z8-E5G"/>
+                        <outlet property="updateButton" destination="WEL-dD-xWv" id="qXi-Ix-fGb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8YC-M8-4LI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
