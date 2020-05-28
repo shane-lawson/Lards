@@ -11,15 +11,30 @@ import UIKit
 class MenuButton: UIButton {
    typealias const = ViewConstants.MenuButton
    
+   override init(frame: CGRect) {
+      super.init(frame: frame)
+      sharedInit()
+   }
+   
+   required init?(coder: NSCoder) {
+      super.init(coder: coder)
+      sharedInit()
+   }
+   
+//   override func prepareForInterfaceBuilder() {
+//      sharedInit()
+//   }
+   
    override func draw(_ rect: CGRect) {
+      layer.backgroundColor = self.tintColor.cgColor
+   }
+
+   func sharedInit() {
       layer.cornerRadius = const.cornerRadius
-      layer.borderColor = const.borderColor
-      layer.borderWidth = const.borderWidth
       self.contentEdgeInsets = const.edgeInsets
-      self.titleLabel?.text = self.titleLabel?.text?.uppercased()
-//      layer.shadowOpacity = 1.0
-//      layer.shadowColor = const.shadowColor
-//      layer.shadowOffset = const.shadowOffset
+      self.setTitle(self.titleLabel?.text?.uppercased(), for: .normal)
+      self.setTitleColor(const.textColor, for: .normal)
+      self.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
    }
 
 }

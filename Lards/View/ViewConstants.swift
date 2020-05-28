@@ -18,6 +18,6 @@ struct ViewConstants {
       static let shadowColor: CGColor = UIColor.darkText.cgColor
       static let shadowOffset: CGSize = CGSize(width: 3.0, height: 3.0)
       static let shadowRadius: CGFloat = 2.0
-      static let backgroundColor: UIColor = .white
+      static let textColor: UIColor = .white
    }
 }
