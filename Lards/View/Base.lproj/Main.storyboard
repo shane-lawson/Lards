@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cjA-Hd-Bag">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQo-bV-Cz0">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -231,7 +231,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Capabilities" id="f0m-wb-f9v">
+                            <tableViewSection headerTitle="Color" id="f0m-wb-f9v">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="T6d-Zu-nGc">
                                         <rect key="frame" x="0.0" y="177.33333206176758" width="375" height="54"/>
@@ -243,19 +243,18 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vdG-Ox-3kJ">
                                                     <rect key="frame" x="20" y="8" width="335" height="38"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gestures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-r0-4yn">
-                                                            <rect key="frame" x="0.0" y="8.9999999999999982" width="69.333333333333329" height="20.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAH-r0-4yn">
+                                                            <rect key="frame" x="0.0" y="8.9999999999999982" width="104.33333333333333" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2l-iR-i0V">
-                                                            <rect key="frame" x="286" y="3.6666666666666643" width="51" height="31"/>
-                                                            <connections>
-                                                                <action selector="toggleGestures:" destination="cav-k1-SFn" eventType="valueChanged" id="DXO-uh-J66"/>
-                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="MKO-F9-XiR"/>
-                                                            </connections>
-                                                        </switch>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tN-5n-icW">
+                                                            <rect key="frame" x="260" y="4" width="75" height="30"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="75" id="ItM-he-loM"/>
+                                                            </constraints>
+                                                        </button>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -266,37 +265,80 @@
                                                 <constraint firstItem="vdG-Ox-3kJ" firstAttribute="top" secondItem="caX-au-iyM" secondAttribute="top" constant="8" id="m1O-1K-UnS"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="QhK-Hq-V9d" kind="popoverPresentation" popoverAnchorView="T6d-Zu-nGc" id="7bx-4D-5xr">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="bsM-L7-ACr">
-                                        <rect key="frame" x="0.0" y="231.33333206176758" width="375" height="54"/>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Capabilities" id="5zE-qm-CJ1">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="lc6-GZ-v9O">
+                                        <rect key="frame" x="0.0" y="287.33333206176758" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bsM-L7-ACr" id="SbS-5f-NZ8">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lc6-GZ-v9O" id="SF4-v4-Rtk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="h2P-HJ-6EB">
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="h8b-ZM-BYZ">
                                                     <rect key="frame" x="20" y="8" width="335" height="38"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVM-gJ-PfK">
-                                                            <rect key="frame" x="0.0" y="8.9999999999999982" width="58.666666666666664" height="20.333333333333329"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gestures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgz-SI-oOe">
+                                                            <rect key="frame" x="0.0" y="8.9999999999999982" width="69.333333333333329" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYD-2c-Kes">
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eM0-0k-qMe">
                                                             <rect key="frame" x="286" y="3.6666666666666643" width="51" height="31"/>
                                                             <connections>
-                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="9HI-aa-QiT"/>
+                                                                <action selector="toggleGestures:" destination="cav-k1-SFn" eventType="valueChanged" id="2NY-YP-Tt7"/>
+                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="zBt-Qm-rms"/>
                                                             </connections>
                                                         </switch>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="h2P-HJ-6EB" secondAttribute="bottom" constant="8" id="I4j-XQ-5HV"/>
-                                                <constraint firstAttribute="trailing" secondItem="h2P-HJ-6EB" secondAttribute="trailing" constant="20" symbolic="YES" id="J1b-RG-aLR"/>
-                                                <constraint firstItem="h2P-HJ-6EB" firstAttribute="leading" secondItem="SbS-5f-NZ8" secondAttribute="leading" constant="20" symbolic="YES" id="irW-Xz-RJ9"/>
-                                                <constraint firstItem="h2P-HJ-6EB" firstAttribute="top" secondItem="SbS-5f-NZ8" secondAttribute="top" constant="8" id="pjJ-Au-ZAT"/>
+                                                <constraint firstAttribute="bottom" secondItem="h8b-ZM-BYZ" secondAttribute="bottom" constant="8" id="LcZ-ON-hHU"/>
+                                                <constraint firstItem="h8b-ZM-BYZ" firstAttribute="leading" secondItem="SF4-v4-Rtk" secondAttribute="leading" constant="20" symbolic="YES" id="NUI-yu-pfA"/>
+                                                <constraint firstItem="h8b-ZM-BYZ" firstAttribute="top" secondItem="SF4-v4-Rtk" secondAttribute="top" constant="8" id="YPv-hh-4RF"/>
+                                                <constraint firstAttribute="trailing" secondItem="h8b-ZM-BYZ" secondAttribute="trailing" constant="20" symbolic="YES" id="x0O-ur-kNw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="A4H-mc-Ltw">
+                                        <rect key="frame" x="0.0" y="341.33333206176758" width="375" height="54"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A4H-mc-Ltw" id="Vzd-Eh-LX1">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZaZ-6X-ah9">
+                                                    <rect key="frame" x="20" y="8" width="335" height="38"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Haptics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUH-DA-JbJ">
+                                                            <rect key="frame" x="0.0" y="8.9999999999999982" width="58.666666666666664" height="20.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iT9-D7-TAh">
+                                                            <rect key="frame" x="286" y="3.6666666666666643" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="Afe-Lh-62F"/>
+                                                            </connections>
+                                                        </switch>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ZaZ-6X-ah9" secondAttribute="trailing" constant="20" symbolic="YES" id="Xf1-DX-s1C"/>
+                                                <constraint firstItem="ZaZ-6X-ah9" firstAttribute="leading" secondItem="Vzd-Eh-LX1" secondAttribute="leading" constant="20" symbolic="YES" id="ZGH-J4-4aV"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZaZ-6X-ah9" secondAttribute="bottom" constant="8" id="f6P-a3-aEB"/>
+                                                <constraint firstItem="ZaZ-6X-ah9" firstAttribute="top" secondItem="Vzd-Eh-LX1" secondAttribute="top" constant="8" id="rUx-ap-Pa1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -310,8 +352,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="5XA-uF-OEe"/>
                     <connections>
+                        <outlet property="colorSwatch" destination="4tN-5n-icW" id="3jp-xd-itd"/>
                         <outlet property="nameTextField" destination="zRH-CR-6R7" id="xPY-Z8-E5G"/>
                         <outlet property="updateButton" destination="WEL-dD-xWv" id="qXi-Ix-fGb"/>
+                        <outletCollection property="switches" destination="eM0-0k-qMe" collectionClass="NSMutableArray" id="yUt-LY-mRH"/>
+                        <outletCollection property="switches" destination="iT9-D7-TAh" collectionClass="NSMutableArray" id="Ihw-HG-FcF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8YC-M8-4LI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -612,6 +657,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZRE-VC-vgn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-250" y="1343"/>
+        </scene>
+        <!--Color Picker View Controller-->
+        <scene sceneID="l1f-Ve-8Pz">
+            <objects>
+                <viewController id="QhK-Hq-V9d" customClass="ColorPickerViewController" customModule="Lards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qko-Yr-MKe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xlz-bg-l1V">
+                                <rect key="frame" x="0.0" y="254" width="375" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="Xnq-ub-qjJ"/>
+                                </constraints>
+                            </pickerView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qoO-xq-0I9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <items>
+                                    <navigationItem id="kom-qC-Vyc"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Xlz-bg-l1V" firstAttribute="trailing" secondItem="hJa-y8-5Am" secondAttribute="trailing" id="8aF-49-vpz"/>
+                            <constraint firstItem="qoO-xq-0I9" firstAttribute="trailing" secondItem="hJa-y8-5Am" secondAttribute="trailing" id="FUX-an-NBZ"/>
+                            <constraint firstItem="Xlz-bg-l1V" firstAttribute="centerY" secondItem="hJa-y8-5Am" secondAttribute="centerY" id="bgd-g7-QV4"/>
+                            <constraint firstItem="Xlz-bg-l1V" firstAttribute="leading" secondItem="hJa-y8-5Am" secondAttribute="leading" id="d5A-kX-zhD"/>
+                            <constraint firstItem="qoO-xq-0I9" firstAttribute="top" secondItem="hJa-y8-5Am" secondAttribute="top" id="eoY-Vj-kb3"/>
+                            <constraint firstItem="qoO-xq-0I9" firstAttribute="leading" secondItem="hJa-y8-5Am" secondAttribute="leading" id="nJR-TE-MBV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hJa-y8-5Am"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zDV-gm-dvL"/>
+                    <connections>
+                        <outlet property="navBar" destination="kom-qC-Vyc" id="EXw-l6-4jK"/>
+                        <outlet property="pickerView" destination="Xlz-bg-l1V" id="R7a-r6-ObD"/>
+                        <segue destination="Q8u-4E-k0f" kind="unwind" identifier="backToSettings" unwindAction="revertChooseColorSegue:" id="RYd-I9-gGI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ilH-81-y73" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Q8u-4E-k0f" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2942" y="-171"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

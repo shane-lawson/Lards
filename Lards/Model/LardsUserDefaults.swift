@@ -13,7 +13,7 @@ class LardsUserDefaults {
    
    // enum so that mistyped string keys aren't an issue
    enum Keys: String {
-      case peerID, displayName, haptics, gestures, color, hasLaunchedBefore
+      case peerID, displayName, haptics, gestures, accentColor, hasLaunchedBefore
    }
   
    // check for first launch (for use in AppDelegate) and initialise default values
@@ -25,7 +25,7 @@ class LardsUserDefaults {
          UserDefaults.standard.set(UIDevice.current.name, forKey: Keys.displayName.rawValue)
          UserDefaults.standard.set(true, forKey: Keys.haptics.rawValue)
          UserDefaults.standard.set(true, forKey: Keys.gestures.rawValue)
-         archiveAndSet(color: UIColor.systemPurple)
+         archiveAndSet(color: UIColor.systemBlue)
          UserDefaults.standard.synchronize()
       }
    }
@@ -37,7 +37,7 @@ class LardsUserDefaults {
    
    fileprivate class func archiveAndSet(color: UIColor) {
       let data = try! NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
-      UserDefaults.standard.set(data, forKey: Keys.color.rawValue)
+      UserDefaults.standard.set(data, forKey: Keys.accentColor.rawValue)
    }
    
    static var peerID: MCPeerID {
@@ -47,9 +47,9 @@ class LardsUserDefaults {
       }
    }
    
-   static var accentColor: UIColor {
+   static var tintColor: UIColor {
       get {
-         let data = UserDefaults.standard.data(forKey: Keys.color.rawValue)!
+         let data = UserDefaults.standard.data(forKey: Keys.accentColor.rawValue)!
          return try! NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data)!
       }
       set(newColor) {

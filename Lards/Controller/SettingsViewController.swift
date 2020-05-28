@@ -14,14 +14,38 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
    
    @IBOutlet weak var nameTextField: UITextField!
    @IBOutlet weak var updateButton: UIButton!
+   @IBOutlet weak var colorSwatch: UIButton!
+   @IBOutlet var switches: [UISwitch]!
    
    override func viewDidLoad() {
       super.viewDidLoad()
 
+
+      colorSwatch.layer.cornerRadius = 5.0
+//      colorSwatch.layer.borderWidth = 1.0
+//      colorSwatch.layer.borderColor = UIColor.systemGray.cgColor
+      setColors()
+      colorSwatch.isUserInteractionEnabled = false
+      
       nameTextField.delegate = self
       nameTextField.placeholder = LardsUserDefaults.displayName
    }
     
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      setColors()
+   }
+   
+   func setColors() {
+      let color = UIApplication.shared.windows.first?.tintColor ?? LardsUserDefaults.tintColor
+      colorSwatch.backgroundColor = color
+      switches.forEach { $0.onTintColor = color }
+   }
+   
+   @IBAction func revertChooseColorSegue(_ segue: UIStoryboardSegue) {
+      setColors()
+   }
+   
    @IBAction func updateName(_ sender: UIButton) {
       LardsUserDefaults.displayName = nameTextField.text!
       nameTextField.placeholder = nameTextField.text!

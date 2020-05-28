@@ -32,6 +32,7 @@
 		348C6A55247F0FD9002ED524 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */; };
 		348C6A5C247F1957002ED524 /* CardPlayedPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A59247F1957002ED524 /* CardPlayedPayload.swift */; };
 		348C6A5E247F6E43002ED524 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A5D247F6E43002ED524 /* DataController.swift */; };
+		348C6A6024802157002ED524 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A5F24802156002ED524 /* ColorPickerViewController.swift */; };
 		34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */; };
 		34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */; };
 		34E0F730247D968E00F63D9F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E0F72F247D968E00F63D9F /* Keys.plist */; };
@@ -67,6 +68,7 @@
 		348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		348C6A59247F1957002ED524 /* CardPlayedPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPlayedPayload.swift; sourceTree = "<group>"; };
 		348C6A5D247F6E43002ED524 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		348C6A5F24802156002ED524 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardsUserDefaults.swift; sourceTree = "<group>"; };
 		34E0F729247D67E900F63D9F /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 		34E0F72F247D968E00F63D9F /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		343EA236246C7333004D88D9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				348C6A5F24802156002ED524 /* ColorPickerViewController.swift */,
 				3410FBED2475D635001E20B6 /* WaitingForGameViewController.swift */,
 				3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */,
 				343EA213246C5EC5004D88D9 /* MainMenuViewController.swift */,
@@ -262,6 +265,7 @@
 				343EA22B246C6AED004D88D9 /* NewGameViewController.swift in Sources */,
 				34E0F735247D9B2300F63D9F /* CurrentWeatherResponse.swift in Sources */,
 				343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */,
+				348C6A6024802157002ED524 /* ColorPickerViewController.swift in Sources */,
 				348C6A5E247F6E43002ED524 /* DataController.swift in Sources */,
 				34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */,
 				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
