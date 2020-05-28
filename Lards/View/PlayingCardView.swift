@@ -170,6 +170,8 @@ class PlayingCardView: UIView {
             image = UIImage(systemName: "cloud.fog")!
          case 771:
             image = UIImage(systemName: "wind")!
+         case 781:
+            image = UIImage(systemName: "tornado")!
          case 800:
             image = UIImage(systemName: weather.isDay ? "sun.max" : "moon.stars")!
          case 801, 802:
