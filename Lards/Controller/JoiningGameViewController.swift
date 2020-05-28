@@ -12,7 +12,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    
    // MARK: Injected Properties
    
-   var game: LardGame!
+   var game: LGLardGame!
    
    //MARK: IBOutlets
    
@@ -63,7 +63,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    }
    
    @objc func processNotifications(_ notification: Notification) {
-      typealias type = LardGame.NotificationType
+      typealias type = LGLardGame.NotificationType
       DispatchQueue.main.async { [unowned self] in
          switch notification.name {
          case type.foundHost.name:

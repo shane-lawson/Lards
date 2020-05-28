@@ -11,9 +11,9 @@ import MultipeerConnectivity
 
 struct CardPlayedPayload: Codable {
    let archivedPlayer: Data
-   let card: PlayingCard
+   let card: LGPlayingCard
    
-   init(_ card: PlayingCard, player: Player) {
+   init(_ card: LGPlayingCard, player: LGPlayer) {
       self.card = card
       self.archivedPlayer = try! NSKeyedArchiver.archivedData(withRootObject: player.peerID, requiringSecureCoding: false)
    }
@@ -27,12 +27,12 @@ struct CardPlayedPayload: Codable {
       } catch {
          print("Error decoding as PlayingCardDeck: \(error.localizedDescription)")
       }
-      self.card = PlayingCard(Rank(rawValue: 14)!,Suit(rawValue: 5)!)
+      self.card = LGPlayingCard(Rank(rawValue: 14)!,Suit(rawValue: 5)!)
       self.archivedPlayer = Data()
    }
    
-   var player: Player {
+   var player: LGPlayer {
       let peerID = try! NSKeyedUnarchiver.unarchivedObject(ofClass: MCPeerID.self, from: archivedPlayer)!
-      return Player(peerID: peerID)
+      return LGPlayer(peerID: peerID)
    }
 }

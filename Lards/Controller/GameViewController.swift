@@ -12,7 +12,7 @@ class GameViewController: UIViewController {
 
    // MARK: Injected Properties
    
-   var game: LardGame!
+   var game: LGLardGame!
    
    // MARK: IBOutlets
    
@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
       myCard.isHidden = true
       theirCard.isHidden = true
       
-      let deck = PlayingCardDeck()
+      let deck = LGPlayingCardDeck()
       deck.shuffle()
       
       let card = deck.cards.popLast()!
@@ -69,7 +69,7 @@ class GameViewController: UIViewController {
 //            self.myCard = self.deckView
 //            self.deckView.center = self.deckCenter
 //      })
-      game.play(PlayingCard(deckView.rank, deckView.suit))
+      game.play(LGPlayingCard(deckView.rank, deckView.suit))
       
       newCoords1 = self.myCard.superview!.convert(self.myCard.center, to: self.view)
       self.deckView.move(to: newCoords1, duration: 1, options: [.curveEaseInOut], completion: {_ in self.haptic.impactOccurred()})
@@ -85,7 +85,7 @@ class GameViewController: UIViewController {
    }
    
    @objc func handleNotifications(_ notification: Notification) {
-      typealias type = LardGame.NotificationType
+      typealias type = LGLardGame.NotificationType
       DispatchQueue.main.async {
          switch notification.name {
          case type.refreshedLocation.name:
@@ -93,8 +93,8 @@ class GameViewController: UIViewController {
             self.deckView.stopAnimatingWeatherIcon()
          case type.receivedCardPlayed.name:
             if let info = notification.userInfo {
-               let player = info["player"] as! Player
-               let card = info["card"] as! PlayingCard
+               let player = info["player"] as! LGPlayer
+               let card = info["card"] as! LGPlayingCard
                self.theirCard.rank = card.rank
                self.theirCard.suit = card.suit
                self.theirCard.isFaceUp = true

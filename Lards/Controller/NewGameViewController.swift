@@ -10,7 +10,7 @@ import UIKit
 
 class NewGameViewController: UIViewController {
 
-   let game = LardGame()
+   let game = LGLardGame()
    
    override func viewDidLoad() {
       super.viewDidLoad()

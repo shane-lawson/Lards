@@ -11,7 +11,7 @@ import Foundation
 import MultipeerConnectivity
 import os
 
-class Player {
+class LGPlayer {
    var peerID: MCPeerID
    var displayName: String {
       return peerID.displayName
@@ -22,7 +22,7 @@ class Player {
    }
 }
 
-class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, CLLocationManagerDelegate {
+class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, CLLocationManagerDelegate {
    let serviceType = "lards-newgame"
    enum NotificationType: String {
       case foundHost
@@ -40,7 +40,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    }
    
    
-   var players: [Player]
+   var players: [LGPlayer]
    var joinRequests: [MCPeerID: (Bool, MCSession?) -> Void]
    var foundHosts: [MCPeerID]
    var isInSetup: Bool
@@ -50,9 +50,9 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       CLLocationManager.locationServicesEnabled()
    }
    var weather: WeatherObject?
-   var deck: PlayingCardDeck?
+   var deck: LGPlayingCardDeck?
    
-   let localPlayer: Player
+   let localPlayer: LGPlayer
    let peerID: MCPeerID
    let session: MCSession
    let advertiser: MCNearbyServiceAdvertiser
@@ -60,12 +60,12 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    let locationManager: CLLocationManager
    
    override init() {
-      players = [Player]()
+      players = [LGPlayer]()
       joinRequests = [MCPeerID: (Bool, MCSession?) -> Void]()
       foundHosts = [MCPeerID]()
       isInSetup = true
       peerID = LardsUserDefaults.peerID
-      localPlayer = Player(peerID: peerID)
+      localPlayer = LGPlayer(peerID: peerID)
 //      session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
       session = MCSession(peer: peerID)
       advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
@@ -109,7 +109,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
             print("Error sending startGame packet to session: \(error.localizedDescription)")
          }
          
-         deck = PlayingCardDeck()
+         deck = LGPlayingCardDeck()
          deck?.shuffle()
 //         deck?.show()
          let deckPacket = LardPacket(.reshuffledDeck, payload: deck)
@@ -134,7 +134,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       
    }
    
-   func play(_ card: PlayingCard) {
+   func play(_ card: LGPlayingCard) {
       do {
          let cardPlayedPayload = CardPlayedPayload(card, player: localPlayer)
          let packet = LardPacket(.cardPlayed, payload: cardPlayedPayload)
@@ -195,7 +195,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
             print("received [\(cardPlayedPayload.card)] from \(cardPlayedPayload.player.displayName)")
             postNotification(of: .receivedCardPlayed, info: ["card": cardPlayedPayload.card, "player": cardPlayedPayload.player])
          case .reshuffledDeck:
-            deck = PlayingCardDeck(from: packet.payload!)
+            deck = LGPlayingCardDeck(from: packet.payload!)
             print(deck!)
          }
       } catch {
@@ -211,7 +211,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
          print("connecting to \(peerID.displayName)")
       case .connected:
          print("connected to \(peerID.displayName)")
-         players.append(Player(peerID: peerID))
+         players.append(LGPlayer(peerID: peerID))
          postNotification(of: .addedPlayer)
          getLocation()
       @unknown default:

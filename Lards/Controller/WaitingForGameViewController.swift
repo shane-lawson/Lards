@@ -12,7 +12,7 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
 
    // MARK: Injected Properties
 
-   var game: LardGame!
+   var game: LGLardGame!
    var host: String?
 
    // MARK: IBOutlets
@@ -38,7 +38,7 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
    }
 
    @objc func handleNotifications(_ notification: Notification) {
-      typealias type = LardGame.NotificationType
+      typealias type = LGLardGame.NotificationType
       DispatchQueue.main.async {
          switch notification.name {
          case type.addedPlayer.name, type.removedPlayer.name:

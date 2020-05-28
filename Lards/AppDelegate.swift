@@ -17,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       LardsUserDefaults.checkIfFirstLaunch()
       
+      DataController.shared.load()
+      
       return true
    }
 

@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-class PlayingCardDeck: Codable, CustomStringConvertible {
-   var cards = [PlayingCard]()
+class LGPlayingCardDeck: Codable, CustomStringConvertible {
+   var cards = [LGPlayingCard]()
    
    init() {
       Suit.allCases.forEach { suit in
          Rank.allCases.forEach { rank in
-            cards.append(PlayingCard(rank, suit))
+            cards.append(LGPlayingCard(rank, suit))
          }
       }
    }
    
    init(from data: Data) {
       do {
-         let incomingDeck = try JSONDecoder().decode(PlayingCardDeck.self, from: data)
+         let incomingDeck = try JSONDecoder().decode(LGPlayingCardDeck.self, from: data)
          self.cards = incomingDeck.cards
       } catch {
          print("Error decoding as PlayingCardDeck: \(error.localizedDescription)")

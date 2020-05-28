@@ -44,7 +44,7 @@ enum Suit: Int, Codable, CaseIterable {
    }
 }
 
-struct PlayingCard: Codable, CustomStringConvertible {
+struct LGPlayingCard: Codable, CustomStringConvertible {
    let rank: Rank
    let suit: Suit
    
@@ -55,7 +55,7 @@ struct PlayingCard: Codable, CustomStringConvertible {
    
    init(from data: Data) {
       do {
-         let incomingCard = try JSONDecoder().decode(PlayingCard.self, from: data)
+         let incomingCard = try JSONDecoder().decode(LGPlayingCard.self, from: data)
          self.rank = incomingCard.rank
          self.suit = incomingCard.suit
          return
