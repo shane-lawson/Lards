@@ -10,14 +10,14 @@ import Foundation
 import UIKit
 
 extension UIView {
-   func move(to endPoint: CGPoint, duration: TimeInterval, options: UIView.AnimationOptions) {
+   func move(to endPoint: CGPoint, duration: TimeInterval, options: UIView.AnimationOptions, completion: ((Bool) -> Void)? = nil) {
       UIView.animate(
          withDuration: duration,
          delay: 0,
          options: options,
          animations: {
             self.center = endPoint
-      }, completion: nil)
+      }, completion: completion)
    }
    
 //   func flip(to endPoint: CGPoint = self.frame.center, duration: TimeInterval, options: UIView.AnimationOptions) {
