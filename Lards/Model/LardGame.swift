@@ -32,6 +32,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       case startingGame
       case receivedRequest
       case refreshedLocation
+      case receivedCardPlayed
       
       var name: NSNotification.Name {
          return NSNotification.Name(self.rawValue)
@@ -49,7 +50,9 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       CLLocationManager.locationServicesEnabled()
    }
    var weather: WeatherObject?
+   var deck: PlayingCardDeck?
    
+   let localPlayer: Player
    let peerID: MCPeerID
    let session: MCSession
    let advertiser: MCNearbyServiceAdvertiser
@@ -62,6 +65,7 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       foundHosts = [MCPeerID]()
       isInSetup = true
       peerID = LardsUserDefaults.peerID
+      localPlayer = Player(peerID: peerID)
 //      session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
       session = MCSession(peer: peerID)
       advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
@@ -102,7 +106,17 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
          do {
             try broadcast(packet.encoded!)
          } catch {
-            print("Error sending to session: \(error.localizedDescription)")
+            print("Error sending startGame packet to session: \(error.localizedDescription)")
+         }
+         
+         deck = PlayingCardDeck()
+         deck?.shuffle()
+//         deck?.show()
+         let deckPacket = LardPacket(.reshuffledDeck, payload: deck)
+         do {
+            try broadcast(deckPacket.encoded!)
+         } catch {
+            print("Error sending reshuffledDeck packet to session: \(error.localizedDescription)")
          }
       }
       
@@ -115,13 +129,19 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    func startHand() {
       
    }
-   
-   func didReceive() {
+
+   func scoreHand() {
       
    }
    
-   func scoreHand() {
-      
+   func play(_ card: PlayingCard) {
+      do {
+         let cardPlayedPayload = CardPlayedPayload(card, player: localPlayer)
+         let packet = LardPacket(.cardPlayed, payload: cardPlayedPayload)
+         try broadcast(packet.encoded!)
+      } catch {
+         print("Error sending cardPlayed packet to session: \(error.localizedDescription)")
+      }
    }
    
    func startMultipeer(isCreating: Bool) {
@@ -148,8 +168,8 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
       NotificationCenter.default.removeObserver(observer)
    }
    
-   func postNotification(of type: NotificationType) {
-      NotificationCenter.default.post(name: type.name, object: nil)
+   func postNotification(of type: NotificationType, info: [AnyHashable : Any]? = nil) {
+      NotificationCenter.default.post(name: type.name, object: nil, userInfo: info)
       print("sent \(type.rawValue) notification from LardGame")
    }
    
@@ -171,9 +191,12 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
          case .startGame:
             self.startGame()
          case .cardPlayed:
-            break
+            let cardPlayedPayload = CardPlayedPayload(from: packet.payload!)
+            print("received [\(cardPlayedPayload.card)] from \(cardPlayedPayload.player.displayName)")
+            postNotification(of: .receivedCardPlayed, info: ["card": cardPlayedPayload.card, "player": cardPlayedPayload.player])
          case .reshuffledDeck:
-            break
+            deck = PlayingCardDeck(from: packet.payload!)
+            print(deck!)
          }
       } catch {
           print("Error decoding LardPacket: \(error.localizedDescription)")
@@ -244,16 +267,13 @@ class LardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, 
    
    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       location = locations.last
-      print("updated location")
       OpenWeatherMapAPI.getCurrentWeather(at: location!.coordinate) { (weather, error) in
-         print("weather returned")
          self.weather = weather!
          self.postNotification(of: .refreshedLocation)
       }
    }
 
    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-      print("location error")
       switch (error as! CLError).code {
       case .denied:
          manager.stopUpdatingLocation()

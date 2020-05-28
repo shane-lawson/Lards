@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3400C7A2247DD36E00A14066 /* WeatherObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3400C7A1247DD36E00A14066 /* WeatherObject.swift */; };
-		340D24C62476F113009A3227 /* CardPlayedPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24C52476F113009A3227 /* CardPlayedPayload.swift */; };
-		340D24C82476F126009A3227 /* ReshuffledDeckPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24C72476F126009A3227 /* ReshuffledDeckPayload.swift */; };
 		340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24C92476FA26009A3227 /* PlayingCardView.swift */; };
 		340D24CC2476FB0E009A3227 /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340D24CB2476FB0E009A3227 /* PlayingCard.swift */; };
 		3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */; };
@@ -29,9 +27,10 @@
 		343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA232246C7262004D88D9 /* ScoringViewController.swift */; };
 		343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */; };
 		3443CC33246C752700BD63C7 /* LardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CC32246C752700BD63C7 /* LardGame.swift */; };
-		3450544624761CFE00D60574 /* StartGamePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3450544524761CFE00D60574 /* StartGamePayload.swift */; };
 		345054482476EC2A00D60574 /* LardPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345054472476EC2A00D60574 /* LardPacket.swift */; };
 		34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650C79247838860056FB14 /* UIView+Animations.swift */; };
+		348C6A55247F0FD9002ED524 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */; };
+		348C6A5C247F1957002ED524 /* CardPlayedPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A59247F1957002ED524 /* CardPlayedPayload.swift */; };
 		34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */; };
 		34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */; };
 		34E0F730247D968E00F63D9F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E0F72F247D968E00F63D9F /* Keys.plist */; };
@@ -41,8 +40,6 @@
 
 /* Begin PBXFileReference section */
 		3400C7A1247DD36E00A14066 /* WeatherObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherObject.swift; sourceTree = "<group>"; };
-		340D24C52476F113009A3227 /* CardPlayedPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPlayedPayload.swift; sourceTree = "<group>"; };
-		340D24C72476F126009A3227 /* ReshuffledDeckPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReshuffledDeckPayload.swift; sourceTree = "<group>"; };
 		340D24C92476FA26009A3227 /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlayingCardView.swift; path = Lards/View/PlayingCardView.swift; sourceTree = SOURCE_ROOT; };
 		340D24CB2476FB0E009A3227 /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
 		3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoiningGameViewController.swift; sourceTree = "<group>"; };
@@ -64,9 +61,10 @@
 		343EA232246C7262004D88D9 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGameViewController.swift; sourceTree = "<group>"; };
 		3443CC32246C752700BD63C7 /* LardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardGame.swift; sourceTree = "<group>"; };
-		3450544524761CFE00D60574 /* StartGamePayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGamePayload.swift; sourceTree = "<group>"; };
 		345054472476EC2A00D60574 /* LardPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardPacket.swift; sourceTree = "<group>"; };
 		34650C79247838860056FB14 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
+		348C6A59247F1957002ED524 /* CardPlayedPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPlayedPayload.swift; sourceTree = "<group>"; };
 		34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardsUserDefaults.swift; sourceTree = "<group>"; };
 		34E0F729247D67E900F63D9F /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 		34E0F72F247D968E00F63D9F /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -148,23 +146,22 @@
 		343EA238246C7359004D88D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				348C6A56247F1947002ED524 /* Transmit Objects */,
 				34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */,
-				3450544424761CD900D60574 /* Transmit Objects */,
-				3443CC32246C752700BD63C7 /* LardGame.swift */,
-				340D24CB2476FB0E009A3227 /* PlayingCard.swift */,
 				34E0F733247D9AE600F63D9F /* OpenWeatherMapAPI */,
+				3443CC32246C752700BD63C7 /* LardGame.swift */,
 				34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */,
+				340D24CB2476FB0E009A3227 /* PlayingCard.swift */,
+				348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		3450544424761CD900D60574 /* Transmit Objects */ = {
+		348C6A56247F1947002ED524 /* Transmit Objects */ = {
 			isa = PBXGroup;
 			children = (
 				345054472476EC2A00D60574 /* LardPacket.swift */,
-				3450544524761CFE00D60574 /* StartGamePayload.swift */,
-				340D24C52476F113009A3227 /* CardPlayedPayload.swift */,
-				340D24C72476F126009A3227 /* ReshuffledDeckPayload.swift */,
+				348C6A59247F1957002ED524 /* CardPlayedPayload.swift */,
 			);
 			path = "Transmit Objects";
 			sourceTree = "<group>";
@@ -256,7 +253,6 @@
 				343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */,
 				343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */,
 				34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */,
-				340D24C82476F126009A3227 /* ReshuffledDeckPayload.swift in Sources */,
 				343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */,
 				343EA229246C6086004D88D9 /* ViewConstants.swift in Sources */,
 				34E0F732247D9ADE00F63D9F /* OpenWeatherMapAPI.swift in Sources */,
@@ -266,6 +262,7 @@
 				34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */,
 				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
 				343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */,
+				348C6A55247F0FD9002ED524 /* PlayingCardDeck.swift in Sources */,
 				345054482476EC2A00D60574 /* LardPacket.swift in Sources */,
 				340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */,
 				34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */,
@@ -273,10 +270,9 @@
 				3410FBEE2475D635001E20B6 /* WaitingForGameViewController.swift in Sources */,
 				340D24CC2476FB0E009A3227 /* PlayingCard.swift in Sources */,
 				343EA212246C5EC5004D88D9 /* SceneDelegate.swift in Sources */,
-				340D24C62476F113009A3227 /* CardPlayedPayload.swift in Sources */,
 				343EA22F246C6B19004D88D9 /* SettingsViewController.swift in Sources */,
 				3400C7A2247DD36E00A14066 /* WeatherObject.swift in Sources */,
-				3450544624761CFE00D60574 /* StartGamePayload.swift in Sources */,
+				348C6A5C247F1957002ED524 /* CardPlayedPayload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

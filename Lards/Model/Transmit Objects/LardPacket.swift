@@ -16,27 +16,18 @@ enum PacketType: Int, Codable {
 
 struct LardPacket: Codable {
    let type: PacketType
-   var payload: Data?
+   private(set) var payload: Data?
    
-   init(_ type: PacketType, payload: Any? = nil) {
+   init(_ type: PacketType) {
       self.type = type
-      if let payload = payload {
-         switch type {
-         case .startGame:
-            self.payload = encode(payload as! StartGamePayload)
-         case .cardPlayed:
-            self.payload = encode(payload as! CardPlayedPayload)
-         case .reshuffledDeck:
-            self.payload = encode(payload as! ReshuffledDeckPayload)
-//         @unknown default:
-//            fatalError("PacketType encoding not implemented in LardPacket")
-         }
-      } else {
-         self.payload = nil
-      }
    }
    
-   func encode<T>(_ value: T) -> Data? where T: Encodable {
+   init<T: Encodable>(_ type: PacketType, payload: T) {
+      self.type = type
+      self.payload = encode(payload)
+   }
+   
+   func encode<T: Encodable>(_ value: T) -> Data? {
       do {
          return try JSONEncoder().encode(value)
       } catch {

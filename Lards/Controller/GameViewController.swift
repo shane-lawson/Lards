@@ -23,20 +23,27 @@ class GameViewController: UIViewController {
    var deckCenter: CGPoint!
    var newCoords1: CGPoint!
    
+   let haptic = UIImpactFeedbackGenerator(style: .light)
+   
    override func viewDidLoad() {
       super.viewDidLoad()
 
-      myCard.rank = .none
-      theirCard.rank = .none
+      myCard.isHidden = true
+      theirCard.isHidden = true
       
-      deckView.rank = .nine
-      deckView.suit = .hearts
+      let deck = PlayingCardDeck()
+      deck.shuffle()
+      
+      let card = deck.cards.popLast()!
+
+      deckView.rank = card.rank
+      deckView.suit = card.suit
       deckView.willGetWeather = game.isLocationEnabled
       deckView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(deckTapped)))
       deckCenter = deckView.center
       
       if game.isLocationEnabled {
-         game.subscribeToNotifications(of: [.refreshedLocation], observer: self, selector: #selector(updateWeatherOnCards))
+         game.subscribeToNotifications(of: [.refreshedLocation, .receivedCardPlayed], observer: self, selector: #selector(handleNotifications(_:)))
       }
    }
 
@@ -62,8 +69,10 @@ class GameViewController: UIViewController {
 //            self.myCard = self.deckView
 //            self.deckView.center = self.deckCenter
 //      })
+      game.play(PlayingCard(deckView.rank, deckView.suit))
+      
       newCoords1 = self.myCard.superview!.convert(self.myCard.center, to: self.view)
-      self.deckView.move(to: newCoords1, duration: 1, options: [.curveEaseInOut])
+      self.deckView.move(to: newCoords1, duration: 1, options: [.curveEaseInOut], completion: {_ in self.haptic.impactOccurred()})
       UIView.transition(
          with: self.deckView,
          duration: 0.5,
@@ -75,10 +84,26 @@ class GameViewController: UIViewController {
 
    }
    
-   @objc func updateWeatherOnCards() {
+   @objc func handleNotifications(_ notification: Notification) {
+      typealias type = LardGame.NotificationType
       DispatchQueue.main.async {
-         PlayingCardView.weather = self.game.weather
-         self.deckView.stopAnimatingWeatherIcon()
+         switch notification.name {
+         case type.refreshedLocation.name:
+            PlayingCardView.weather = self.game.weather
+            self.deckView.stopAnimatingWeatherIcon()
+         case type.receivedCardPlayed.name:
+            if let info = notification.userInfo {
+               let player = info["player"] as! Player
+               let card = info["card"] as! PlayingCard
+               self.theirCard.rank = card.rank
+               self.theirCard.suit = card.suit
+               self.theirCard.isFaceUp = true
+               self.theirCard.isHidden = false
+            }
+            
+         default:
+            print("Received notification which is unhandled in GameViewController")
+         }
       }
    }
 
