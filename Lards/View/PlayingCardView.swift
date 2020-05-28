@@ -44,15 +44,15 @@ class PlayingCardView: UIView {
       let path = UIBezierPath(roundedRect: bounds.inset(by: UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)), cornerRadius: cornerRadius)
       
       //set border and fill colors or shaded card "shape" if none
-      if rank == Rank.none {
-         UIColor.black.withAlphaComponent(0.15).setFill()
-         path.stroke()
-         path.fill()
-         return
-      } else {
+//      if rank == Rank.none {
+//         UIColor.black.withAlphaComponent(0.15).setFill()
+//         path.stroke()
+//         path.fill()
+//         return
+//      } else {
          UIColor.gray.setStroke()
          UIColor.white.setFill()
-      }
+//      }
       
       path.stroke()
       path.fill()
@@ -98,6 +98,8 @@ class PlayingCardView: UIView {
       rotation.duration = 1.5
       rotation.repeatCount = 30/1.5
       weatherIcon.layer.add(rotation, forKey: "spin")
+      
+      //TODO: change animation so that it fades out if never receives weather object
    }
    
    func stopAnimatingWeatherIcon() {
@@ -184,7 +186,7 @@ class PlayingCardView: UIView {
          imageView.image = image?.withTintColor(.white, renderingMode: .alwaysOriginal)
       })
       imageView.frame.size = cardBackIconSize
-      imageView.isHidden = isFaceUp || rank == Rank.none
+      imageView.isHidden = isFaceUp //|| rank == Rank.none
    }
 }
    
