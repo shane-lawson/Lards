@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Rank: Int, Codable, CaseIterable {
+enum Rank: Int64, Codable, CaseIterable {
    case ace = 1, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king
    
    var string: String {
@@ -27,7 +27,7 @@ enum Rank: Int, Codable, CaseIterable {
    }
 }
 
-enum Suit: Int, Codable, CaseIterable {
+enum Suit: Int64, Codable, CaseIterable {
    case spades, hearts, diamonds, clubs
    
    var string: String {

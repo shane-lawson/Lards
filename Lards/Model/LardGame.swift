@@ -39,8 +39,9 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
       }
    }
    
+   var coreDataGame: LardGame!
    
-   var players: [LGPlayer]
+   var joinedPlayers: [LGPlayer]
    var joinRequests: [MCPeerID: (Bool, MCSession?) -> Void]
    var foundHosts: [MCPeerID]
    var isInSetup: Bool
@@ -51,8 +52,8 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
    }
    var weather: WeatherObject?
    var deck: LGPlayingCardDeck?
+   var localPlayer: Player!
    
-   let localPlayer: LGPlayer
    let peerID: MCPeerID
    let session: MCSession
    let advertiser: MCNearbyServiceAdvertiser
@@ -60,12 +61,11 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
    let locationManager: CLLocationManager
    
    override init() {
-      players = [LGPlayer]()
+      joinedPlayers = [LGPlayer]()
       joinRequests = [MCPeerID: (Bool, MCSession?) -> Void]()
       foundHosts = [MCPeerID]()
       isInSetup = true
       peerID = LardsUserDefaults.peerID
-      localPlayer = LGPlayer(peerID: peerID)
 //      session = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
       session = MCSession(peer: peerID)
       advertiser = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
@@ -100,7 +100,30 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
       foundHosts.removeAll { $0 == peerID }
    }
    
+   func createCoreDataGame() {
+      coreDataGame = LardGame(context: DataController.shared.viewContext)
+      localPlayer = Player(context: DataController.shared.viewContext)
+      localPlayer.peerID = peerID
+      coreDataGame.localPlayer = localPlayer
+      joinedPlayers.forEach {
+         let player = Player(context: DataController.shared.viewContext)
+         player.peerID = $0.peerID
+         coreDataGame.addToPlayers(player)
+      }
+      coreDataGame.displayName = "\((localPlayer.peerID as! MCPeerID).displayName)'s Game"
+      joinedPlayers.forEach { _ in
+         coreDataGame.addToPlayers(Player(context: DataController.shared.viewContext))
+      }
+      DataController.shared.saveContext()
+   }
+   
+   func saveDeck() {
+      coreDataGame.deck = PlayingCardDeck(context: DataController.shared.viewContext)
+      DataController.shared.saveContext()
+   }
+   
    func startGame() {
+      createCoreDataGame()
       if isCreator {
          let packet = LardPacket(.startGame)
          do {
@@ -118,6 +141,8 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
          } catch {
             print("Error sending reshuffledDeck packet to session: \(error.localizedDescription)")
          }
+
+         saveDeck()
       }
       
       postNotification(of: .startingGame)
@@ -136,7 +161,7 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
    
    func play(_ card: LGPlayingCard) {
       do {
-         let cardPlayedPayload = CardPlayedPayload(card, player: localPlayer)
+         let cardPlayedPayload = CardPlayedPayload(card, player: localPlayer!)
          let packet = LardPacket(.cardPlayed, payload: cardPlayedPayload)
          try broadcast(packet.encoded!)
       } catch {
@@ -197,6 +222,7 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
          case .reshuffledDeck:
             deck = LGPlayingCardDeck(from: packet.payload!)
             print(deck!)
+            self.saveDeck()
          }
       } catch {
           print("Error decoding LardPacket: \(error.localizedDescription)")
@@ -211,7 +237,7 @@ class LGLardGame: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate
          print("connecting to \(peerID.displayName)")
       case .connected:
          print("connected to \(peerID.displayName)")
-         players.append(LGPlayer(peerID: peerID))
+         joinedPlayers.append(LGPlayer(peerID: peerID))
          postNotification(of: .addedPlayer)
          getLocation()
       @unknown default:

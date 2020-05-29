@@ -34,6 +34,8 @@
 		348C6A5E247F6E43002ED524 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A5D247F6E43002ED524 /* DataController.swift */; };
 		348C6A6024802157002ED524 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A5F24802156002ED524 /* ColorPickerViewController.swift */; };
 		34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */; };
+		34CFEA132481EF9B008ED284 /* MCPeerIDToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CFEA122481EF9B008ED284 /* MCPeerIDToData.swift */; };
+		34CFEA1F24820F9E008ED284 /* PlayingCardDeck+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CFEA1E24820F9E008ED284 /* PlayingCardDeck+Extensions.swift */; };
 		34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */; };
 		34E0F730247D968E00F63D9F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E0F72F247D968E00F63D9F /* Keys.plist */; };
 		34E0F732247D9ADE00F63D9F /* OpenWeatherMapAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F731247D9ADE00F63D9F /* OpenWeatherMapAPI.swift */; };
@@ -70,6 +72,8 @@
 		348C6A5D247F6E43002ED524 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		348C6A5F24802156002ED524 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardsUserDefaults.swift; sourceTree = "<group>"; };
+		34CFEA122481EF9B008ED284 /* MCPeerIDToData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPeerIDToData.swift; sourceTree = "<group>"; };
+		34CFEA1E24820F9E008ED284 /* PlayingCardDeck+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayingCardDeck+Extensions.swift"; sourceTree = "<group>"; };
 		34E0F729247D67E900F63D9F /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 		34E0F72F247D968E00F63D9F /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		34E0F731247D9ADE00F63D9F /* OpenWeatherMapAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherMapAPI.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 		343EA238246C7359004D88D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34CFEA1D24820F78008ED284 /* Managed Object Extensions */,
+				34CFEA112481EF50008ED284 /* Transfomers */,
 				348C6A56247F1947002ED524 /* Transmit Objects */,
 				34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */,
 				34E0F733247D9AE600F63D9F /* OpenWeatherMapAPI */,
@@ -170,6 +176,22 @@
 				348C6A59247F1957002ED524 /* CardPlayedPayload.swift */,
 			);
 			path = "Transmit Objects";
+			sourceTree = "<group>";
+		};
+		34CFEA112481EF50008ED284 /* Transfomers */ = {
+			isa = PBXGroup;
+			children = (
+				34CFEA122481EF9B008ED284 /* MCPeerIDToData.swift */,
+			);
+			path = Transfomers;
+			sourceTree = "<group>";
+		};
+		34CFEA1D24820F78008ED284 /* Managed Object Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				34CFEA1E24820F9E008ED284 /* PlayingCardDeck+Extensions.swift */,
+			);
+			path = "Managed Object Extensions";
 			sourceTree = "<group>";
 		};
 		34E0F733247D9AE600F63D9F /* OpenWeatherMapAPI */ = {
@@ -268,9 +290,11 @@
 				348C6A6024802157002ED524 /* ColorPickerViewController.swift in Sources */,
 				348C6A5E247F6E43002ED524 /* DataController.swift in Sources */,
 				34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */,
+				34CFEA1F24820F9E008ED284 /* PlayingCardDeck+Extensions.swift in Sources */,
 				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
 				343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */,
 				348C6A55247F0FD9002ED524 /* PlayingCardDeck.swift in Sources */,
+				34CFEA132481EF9B008ED284 /* MCPeerIDToData.swift in Sources */,
 				345054482476EC2A00D60574 /* LardPacket.swift in Sources */,
 				340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */,
 				34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */,

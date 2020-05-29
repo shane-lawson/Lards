@@ -29,6 +29,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
       playerTableView.dataSource = self
       playerTableView.delegate = self
 
+      setupUI()
       setLoading(true)
    }
    
@@ -36,7 +37,6 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
       super.viewWillAppear(animated)
       game.subscribeToNotifications(of: [.receivedRequest, .addedPlayer], observer: self, selector: #selector(processNotifications(_:)))
       game.startMultipeer(isCreating: true)
-      setupUI()
    }
    
    override func viewWillDisappear(_ animated: Bool) {
@@ -52,6 +52,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
    func setupUI() {
       navBar.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.done))
       navBar.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
+      
    }
 
    func setLoading(_ isLoading: Bool) {
@@ -109,7 +110,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
       case 0:
          return game.joinRequests.count
       case 1:
-         return game.players.count
+         return game.joinedPlayers.count
       default:
          return 0
       }
@@ -138,7 +139,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
          let keys = game.joinRequests.keys.map { $0 }
          return keys[indexPath.row].displayName
       case 1:
-         return game.players[indexPath.row].displayName
+         return game.joinedPlayers[indexPath.row].displayName
       default:
          fatalError("section does not exist")
       }

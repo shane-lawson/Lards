@@ -13,9 +13,9 @@ struct CardPlayedPayload: Codable {
    let archivedPlayer: Data
    let card: LGPlayingCard
    
-   init(_ card: LGPlayingCard, player: LGPlayer) {
+   init(_ card: LGPlayingCard, player: Player) {
       self.card = card
-      self.archivedPlayer = try! NSKeyedArchiver.archivedData(withRootObject: player.peerID, requiringSecureCoding: false)
+      self.archivedPlayer = try! NSKeyedArchiver.archivedData(withRootObject: player.peerID!, requiringSecureCoding: false)
    }
    
    init(from data: Data) {

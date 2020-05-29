@@ -58,13 +58,13 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return game.players.count
+      return game.joinedPlayers.count
    }
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath)
 
-      cell.textLabel?.text = game.players[indexPath.row].displayName
+      cell.textLabel?.text = game.joinedPlayers[indexPath.row].displayName
 
       return cell
    }
