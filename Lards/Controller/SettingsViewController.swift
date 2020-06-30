@@ -17,13 +17,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
    @IBOutlet weak var colorSwatch: UIButton!
    @IBOutlet var switches: [UISwitch]!
    
+   // MARK: Overrides
+   
    override func viewDidLoad() {
       super.viewDidLoad()
 
-
       colorSwatch.layer.cornerRadius = 5.0
-//      colorSwatch.layer.borderWidth = 1.0
-//      colorSwatch.layer.borderColor = UIColor.systemGray.cgColor
       setColors()
       colorSwatch.isUserInteractionEnabled = false
       
@@ -36,11 +35,15 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
       setColors()
    }
    
+   // MARK: UI Updates
+   
    func setColors() {
       let color = UIApplication.shared.windows.first?.tintColor ?? LardsUserDefaults.tintColor
       colorSwatch.backgroundColor = color
       switches.forEach { $0.onTintColor = color }
    }
+   
+   // MARK: IBActions
    
    @IBAction func revertChooseColorSegue(_ segue: UIStoryboardSegue) {
       setColors()
@@ -54,33 +57,19 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
       updateButton.isEnabled = false
    }
    
-   @IBAction func toggleGestures(_ sender: UISwitch) {
-      LardsUserDefaults.gestures = sender.isOn
-   }
-   
    @IBAction func toggleHaptics(_ sender: UISwitch) {
       LardsUserDefaults.haptics = sender.isOn
    }
    
-   /*
-   // MARK: - Navigation
-
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
-   }
-   */
-   
    // MARK: - UITextFieldDelegate
 
    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-      updateButton.isEnabled = textField.text!.count > 2
+      updateButton.isEnabled = textField.text!.count > 1
       return true
    }
    
    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-      if textField.text!.count > 2 {
+      if textField.text!.count > 1 {
          updateName(updateButton)
          return true
       } else {

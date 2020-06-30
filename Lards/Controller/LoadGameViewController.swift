@@ -11,12 +11,18 @@ import UIKit
 
 class LoadGameViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+   // MARK: IBOutlets
+   
    @IBOutlet weak var tableView: UITableView!
+   
+   // MARK: Properties
    
    var games: [[LardGame]]?
    var sectionTitles = [String]()
    
    var selectedGame: LardGame?
+   
+   // MARK: Overrides
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -27,6 +33,9 @@ class LoadGameViewController: UIViewController, UITableViewDataSource, UITableVi
       performFetch()
    }
 
+   // MARK: CoreData Fetch
+   
+   //fetch all games and sort into not/completed with appropriate titles for table view sections
    func performFetch() {
       let fetchRequest: NSFetchRequest<LardGame> = LardGame.fetchRequest()
       if let result = try? DataController.shared.viewContext.fetch(fetchRequest) {
@@ -50,14 +59,14 @@ class LoadGameViewController: UIViewController, UITableViewDataSource, UITableVi
       }
    }
 
-   // MARK: Navigation
+   // MARK: - Navigation
 
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       switch segue.identifier {
       case "resumeGame":
-         let gameVC = segue.destination as! GameViewController
-         // TODO: use core data model objects
-//         gameVC.game = selectedGame
+         let gameVC = segue.destination as! WaitingForGameViewController
+         let lgGame = LGLardGame(coreDataGame: selectedGame!)
+         gameVC.game = lgGame
       default:
          break
       }
@@ -80,7 +89,20 @@ class LoadGameViewController: UIViewController, UITableViewDataSource, UITableVi
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath)
-      cell.textLabel?.text = game(at: indexPath).displayName
+      let loadGame = game(at: indexPath)
+      
+      // get CoreData Players from game object and cast them to Players
+      let players: [Player] = {
+         var array = [Player]()
+         (loadGame.players?.forEach { playerElement in
+            let player = playerElement as! Player
+            array.append(player)
+            })!
+         return array
+      }()
+      
+      cell.textLabel?.text = "vs. \(players.first!.displayName)"
+      cell.detailTextLabel?.text = "Created \(loadGame.displayName ?? "unknown")"
       return cell
    }
    
@@ -98,6 +120,8 @@ class LoadGameViewController: UIViewController, UITableViewDataSource, UITableVi
       selectedGame = game(at: indexPath)
       performSegue(withIdentifier: "resumeGame", sender: self)
    }
+   
+   // MARK: Helpers
    
    fileprivate func game(at indexPath: IndexPath) -> LardGame {
       return (games?[indexPath.section][indexPath.row])!

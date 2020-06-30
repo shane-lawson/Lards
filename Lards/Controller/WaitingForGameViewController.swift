@@ -20,10 +20,13 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
    @IBOutlet weak var navBar: UINavigationItem!
    @IBOutlet weak var tableView: UITableView!
 
+   // MARK: Overrides
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
       tableView.dataSource = self
+      tableView.isUserInteractionEnabled = false
       
       let activityIndicator = UIActivityIndicatorView()
       activityIndicator.startAnimating()
@@ -37,11 +40,15 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
       game.subscribeToNotifications(of: [.addedPlayer, .removedPlayer, .startingGame], observer: self, selector: #selector(handleNotifications(_:)))
    }
 
+   // MARK: Notifications
+   
    @objc func handleNotifications(_ notification: Notification) {
       typealias type = LGLardGame.NotificationType
       DispatchQueue.main.async {
          switch notification.name {
-         case type.addedPlayer.name, type.removedPlayer.name:
+         case type.addedPlayer.name:
+            self.performSegue(withIdentifier: "startGame", sender: nil)
+         case type.removedPlayer.name:
             self.tableView.reloadData()
          case type.startingGame.name:
             self.performSegue(withIdentifier: "startGame", sender: nil)
@@ -58,20 +65,19 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return game.joinedPlayers.count
+      return game.joinedPlayers?.count ?? game.coreDataGame.players?.count ?? 0
    }
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath)
 
-      cell.textLabel?.text = game.joinedPlayers[indexPath.row].displayName
+      cell.textLabel?.text = game.joinedPlayers?[indexPath.row].displayName ?? (game.coreDataGame.players?.firstObject as! Player).displayName
 
       return cell
    }
 
    // MARK: - Navigation
 
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       switch segue.identifier {
       case "startGame":
@@ -82,4 +88,8 @@ class WaitingForGameViewController: UIViewController, UITableViewDataSource {
       }
    }
 
+   @IBAction func backToRejoin(_ segue: UIStoryboardSegue) {
+      // nothing
+   }
+   
 }

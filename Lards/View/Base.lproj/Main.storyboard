@@ -15,53 +15,113 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="dhY-68-1Mu">
-                                <rect key="frame" x="62.666666666666657" y="188" width="249.99999999999997" height="490"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1Rj-Tz-tgE">
+                                <rect key="frame" x="0.0" y="88" width="375" height="345"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Gh-YF-m28">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="250" id="M2w-S9-buP"/>
-                                        </constraints>
+                                        <rect key="frame" x="74.333333333333329" y="0.0" width="226.66666666666669" height="162.66666666666666"/>
                                         <string key="text">Welcome to
 Lards</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="45"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="mzo-VL-UgX">
+                                        <rect key="frame" x="0.0" y="182.66666666666669" width="375" height="162.33333333333331"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="dhY-68-1Mu">
+                                <rect key="frame" x="62.666666666666657" y="433" width="249.99999999999997" height="345"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uZq-ln-oKn" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="63.666666666666664"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIx-Fh-ndT" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="300" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="63.666666666666686" width="250" height="30"/>
                                         <state key="normal" title="NEW GAME"/>
                                         <connections>
                                             <segue destination="cjA-Hd-Bag" kind="show" id="cP6-oF-xYb"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YU8-pR-o8M" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="93.666666666666629" width="250" height="64"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWQ-0G-eTS" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="380" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="157.66666666666663" width="250" height="30"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" title="LOAD GAME"/>
                                         <connections>
                                             <segue destination="oFf-84-xOC" kind="show" id="Wt6-Z5-9VA"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-rI-6Lm" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="187.66666666666663" width="250" height="63.666666666666657"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GDG-p2-n9a" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="460" width="250" height="30"/>
+                                        <rect key="frame" x="0.0" y="251.33333333333337" width="250" height="30"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" title="SETTINGS"/>
                                         <connections>
                                             <segue destination="cav-k1-SFn" kind="show" id="rM4-no-w1X"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cN-8f-YYP" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="281.33333333333337" width="250" height="63.666666666666686"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="fIx-Fh-ndT" firstAttribute="top" secondItem="uZq-ln-oKn" secondAttribute="bottom" id="09R-vi-oic"/>
+                                    <constraint firstItem="GDG-p2-n9a" firstAttribute="top" secondItem="Mhg-rI-6Lm" secondAttribute="bottom" id="48h-fK-RSF"/>
+                                    <constraint firstItem="Mhg-rI-6Lm" firstAttribute="top" secondItem="HWQ-0G-eTS" secondAttribute="bottom" id="Bei-A9-YyW"/>
+                                    <constraint firstItem="uZq-ln-oKn" firstAttribute="top" secondItem="dhY-68-1Mu" secondAttribute="top" id="DaK-Mi-rBO"/>
+                                    <constraint firstItem="HWQ-0G-eTS" firstAttribute="top" secondItem="YU8-pR-o8M" secondAttribute="bottom" id="WQf-FZ-tjF"/>
+                                    <constraint firstItem="5cN-8f-YYP" firstAttribute="top" secondItem="GDG-p2-n9a" secondAttribute="bottom" id="ZKG-E9-caR"/>
+                                    <constraint firstAttribute="bottom" secondItem="5cN-8f-YYP" secondAttribute="bottom" id="js0-AY-Bh3"/>
+                                    <constraint firstItem="YU8-pR-o8M" firstAttribute="top" secondItem="fIx-Fh-ndT" secondAttribute="bottom" id="oRA-2M-5zv"/>
                                     <constraint firstAttribute="width" constant="250" id="yQO-61-Lye"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wsT-u4-RW3">
+                                <rect key="frame" x="124.66666666666669" y="754" width="126" height="24"/>
+                                <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Icon from ">
+                                            <attributes>
+                                                <color key="NSColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="Game-icons.net">
+                                            <attributes>
+                                                <color key="NSColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="iconAttributionTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AaT-rd-Jdq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dhY-68-1Mu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eq3-2b-RVj"/>
-                            <constraint firstItem="dhY-68-1Mu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="tMj-XB-l1x"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dhY-68-1Mu" secondAttribute="bottom" id="8Ss-Qy-Knc"/>
+                            <constraint firstItem="1Rj-Tz-tgE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Cs4-tw-CDg"/>
+                            <constraint firstItem="wsT-u4-RW3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MmG-Q1-IAl"/>
+                            <constraint firstItem="1Rj-Tz-tgE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PyV-EZ-rzF"/>
+                            <constraint firstAttribute="trailing" secondItem="1Rj-Tz-tgE" secondAttribute="trailing" id="jUK-PT-gAg"/>
+                            <constraint firstItem="dhY-68-1Mu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="jgB-3G-gx2"/>
+                            <constraint firstItem="dhY-68-1Mu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="udU-ji-uhi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerY" secondItem="1Rj-Tz-tgE" secondAttribute="bottom" id="vUe-Sw-VHQ"/>
+                            <constraint firstItem="wsT-u4-RW3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="xgG-2H-VWr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -69,7 +129,7 @@ Lards</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="-969"/>
+            <point key="canvasLocation" x="1415.625" y="-969.71830985915494"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lGx-jL-bYZ">
@@ -87,21 +147,6 @@ Lards</string>
             </objects>
             <point key="canvasLocation" x="655" y="-969"/>
         </scene>
-        <!--Scoring View Controller-->
-        <scene sceneID="8GS-Tm-0pm">
-            <objects>
-                <viewController id="qgr-XU-bgy" customClass="ScoringViewController" customModule="Lards" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YAj-sw-cUo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="uu1-Bh-4Qn"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="t0L-mE-aEV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2417" y="2229"/>
-        </scene>
         <!--New Game-->
         <scene sceneID="9CA-2a-8Qh">
             <objects>
@@ -110,24 +155,44 @@ Lards</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="u9V-SI-szJ">
-                                <rect key="frame" x="62.666666666666657" y="378" width="249.99999999999997" height="110"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="u9V-SI-szJ">
+                                <rect key="frame" x="62.666666666666657" y="88" width="249.99999999999997" height="690"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMM-1T-gkA" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="250" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sPz-rf-7Bp" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="ptS-gt-9b0"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="Mnj-wa-URC">
+                                        <rect key="frame" x="0.0" y="100" width="250" height="250"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="cGa-D6-ZUM"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uMM-1T-gkA" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="440" width="250" height="30"/>
                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                         <state key="normal" title="CREATE GAME"/>
                                         <connections>
                                             <action selector="createGameTapped:" destination="cjA-Hd-Bag" eventType="touchUpInside" id="RGN-dX-hBL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5S-sC-ADW" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="80" width="250" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5S-sC-ADW" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="560" width="250" height="30"/>
                                         <state key="normal" title="JOIN GAME"/>
                                         <connections>
                                             <action selector="joinGameTapped:" destination="cjA-Hd-Bag" eventType="touchUpInside" id="b5K-BO-fqq"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODJ-YH-2hl" userLabel="Spacer">
+                                        <rect key="frame" x="0.0" y="680" width="250" height="10"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="Gp5-46-ZbC"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="eO0-f6-Bq7"/>
@@ -136,7 +201,8 @@ Lards</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="u9V-SI-szJ" firstAttribute="centerY" secondItem="3X3-eI-YkD" secondAttribute="centerY" id="bTg-X4-7j6"/>
+                            <constraint firstItem="u9V-SI-szJ" firstAttribute="top" secondItem="3X3-eI-YkD" secondAttribute="top" id="BHZ-Yg-DlY"/>
+                            <constraint firstItem="3X3-eI-YkD" firstAttribute="bottom" secondItem="u9V-SI-szJ" secondAttribute="bottom" id="R0r-bd-JMT"/>
                             <constraint firstItem="u9V-SI-szJ" firstAttribute="centerX" secondItem="3X3-eI-YkD" secondAttribute="centerX" id="zyf-0S-iwW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3X3-eI-YkD"/>
@@ -156,23 +222,30 @@ Lards</string>
             <objects>
                 <viewController id="oFf-84-xOC" customClass="LoadGameViewController" customModule="Lards" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zP4-mv-Hcx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="a3i-gA-AZa">
-                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameCell" textLabel="vcM-AR-q7z" style="IBUITableViewCellStyleDefault" id="wO7-l4-iKy">
-                                        <rect key="frame" x="15" y="55.333332061767578" width="345" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameCell" textLabel="vcM-AR-q7z" detailTextLabel="dTE-CF-Ot4" style="IBUITableViewCellStyleSubtitle" id="wO7-l4-iKy">
+                                        <rect key="frame" x="15" y="55.5" width="290" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wO7-l4-iKy" id="Pkf-dR-6WJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vcM-AR-q7z">
-                                                    <rect key="frame" x="15" y="0.0" width="315" height="43.666667938232422"/>
+                                                    <rect key="frame" x="15" y="10" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dTE-CF-Ot4">
+                                                    <rect key="frame" x="15" y="31.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -194,7 +267,7 @@ Lards</string>
                     <navigationItem key="navigationItem" title="Load Game" id="U61-zh-QMU"/>
                     <connections>
                         <outlet property="tableView" destination="a3i-gA-AZa" id="Xbc-Hv-icM"/>
-                        <segue destination="rr4-Tw-xNt" kind="presentation" identifier="resumeGame" modalPresentationStyle="fullScreen" id="l8h-oA-jza"/>
+                        <segue destination="k0z-27-i8N" kind="showDetail" identifier="resumeGame" id="4de-9O-T5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K7b-Fu-Hne" sceneMemberID="firstResponder"/>
@@ -291,42 +364,8 @@ Lards</string>
                             </tableViewSection>
                             <tableViewSection headerTitle="Capabilities" id="5zE-qm-CJ1">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="lc6-GZ-v9O">
-                                        <rect key="frame" x="0.0" y="287.33333206176758" width="375" height="54"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lc6-GZ-v9O" id="SF4-v4-Rtk">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="h8b-ZM-BYZ">
-                                                    <rect key="frame" x="20" y="8" width="335" height="38"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gestures" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgz-SI-oOe">
-                                                            <rect key="frame" x="0.0" y="8.9999999999999982" width="69.333333333333329" height="20.333333333333329"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eM0-0k-qMe">
-                                                            <rect key="frame" x="286" y="3.6666666666666643" width="51" height="31"/>
-                                                            <connections>
-                                                                <action selector="toggleGestures:" destination="cav-k1-SFn" eventType="valueChanged" id="2NY-YP-Tt7"/>
-                                                                <action selector="toggleHaptics:" destination="cav-k1-SFn" eventType="valueChanged" id="zBt-Qm-rms"/>
-                                                            </connections>
-                                                        </switch>
-                                                    </subviews>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="h8b-ZM-BYZ" secondAttribute="bottom" constant="8" id="LcZ-ON-hHU"/>
-                                                <constraint firstItem="h8b-ZM-BYZ" firstAttribute="leading" secondItem="SF4-v4-Rtk" secondAttribute="leading" constant="20" symbolic="YES" id="NUI-yu-pfA"/>
-                                                <constraint firstItem="h8b-ZM-BYZ" firstAttribute="top" secondItem="SF4-v4-Rtk" secondAttribute="top" constant="8" id="YPv-hh-4RF"/>
-                                                <constraint firstAttribute="trailing" secondItem="h8b-ZM-BYZ" secondAttribute="trailing" constant="20" symbolic="YES" id="x0O-ur-kNw"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="54" id="A4H-mc-Ltw">
-                                        <rect key="frame" x="0.0" y="341.33333206176758" width="375" height="54"/>
+                                        <rect key="frame" x="0.0" y="287.33333206176758" width="375" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A4H-mc-Ltw" id="Vzd-Eh-LX1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
@@ -371,7 +410,6 @@ Lards</string>
                         <outlet property="colorSwatch" destination="4tN-5n-icW" id="3jp-xd-itd"/>
                         <outlet property="nameTextField" destination="zRH-CR-6R7" id="xPY-Z8-E5G"/>
                         <outlet property="updateButton" destination="WEL-dD-xWv" id="qXi-Ix-fGb"/>
-                        <outletCollection property="switches" destination="eM0-0k-qMe" collectionClass="NSMutableArray" id="yUt-LY-mRH"/>
                         <outletCollection property="switches" destination="iT9-D7-TAh" collectionClass="NSMutableArray" id="Ihw-HG-FcF"/>
                     </connections>
                 </tableViewController>
@@ -384,21 +422,21 @@ Lards</string>
             <objects>
                 <viewController id="q3K-AK-Nth" customClass="CreatingGameViewController" customModule="Lards" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fU-aw-WkW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="JjU-VW-EVh">
-                                <rect key="frame" x="0.0" y="56" width="375" height="702"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="404"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerCell" textLabel="dsU-Aa-wAP" style="IBUITableViewCellStyleDefault" id="POE-Pw-EX5">
-                                        <rect key="frame" x="15" y="55.333332061767578" width="345" height="43.666667938232422"/>
+                                        <rect key="frame" x="15" y="55.5" width="290" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="POE-Pw-EX5" id="b4m-0A-EEQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dsU-Aa-wAP">
-                                                    <rect key="frame" x="15" y="0.0" width="315" height="43.666667938232422"/>
+                                                    <rect key="frame" x="15" y="0.0" width="260" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -410,16 +448,16 @@ Lards</string>
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="bFX-gG-A3d">
-                                <rect key="frame" x="20" y="304.66666666666669" width="335" height="115"/>
+                                <rect key="frame" x="20" y="149" width="280" height="162.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting for Players" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaO-e0-KCv">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="95.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="afp-B0-a7g">
-                                        <rect key="frame" x="149" y="78" width="37" height="37"/>
+                                        <rect key="frame" x="121.5" y="125.5" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -428,7 +466,7 @@ Lards</string>
                                 </constraints>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qc-qy-pn0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
                                     <navigationItem title="Creating Game" id="tuP-8v-Wjg"/>
                                 </items>
@@ -471,80 +509,166 @@ Lards</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghR-yw-ozA" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
-                                <rect key="frame" x="137.66666666666666" y="618" width="100" height="140"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNv-sR-IDM" customClass="MenuButton" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="172.66666666666666" y="44" width="30" height="34"/>
+                            </button>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4hd-Hq-mBo" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="137.66666666666666" y="88" width="100" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="GKV-fj-be3"/>
-                                    <constraint firstAttribute="height" constant="140" id="WfE-xU-lb3"/>
+                                    <constraint firstAttribute="height" constant="140" id="Oil-3A-GGE"/>
+                                    <constraint firstAttribute="width" constant="100" id="fq7-8B-lyM"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="LSi-5K-kTK">
-                                <rect key="frame" x="137.66666666666666" y="261" width="100" height="300"/>
-                                <subviews>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvq-rM-haq" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="CpT-p7-oNk"/>
-                                            <constraint firstAttribute="height" constant="140" id="y2e-dF-0cS"/>
-                                        </constraints>
-                                    </view>
-                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4O-xQ-9jM" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="160" width="100" height="140"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="140" id="QSc-AE-cU9"/>
-                                            <constraint firstAttribute="width" constant="100" id="dG7-eE-JEB"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                            </stackView>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Om2-n7-9lv" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="197.66666666666666" y="382" width="99.999999999999972" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="KW5-Al-wrC"/>
+                                    <constraint firstAttribute="height" constant="140" id="WIB-WB-3Ie"/>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zni-dP-7lC" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="137.66666666666666" y="618" width="100" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Hd5-8B-DoE"/>
+                                    <constraint firstAttribute="width" constant="100" id="rn9-wB-xEI"/>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nOQ-UT-OT5" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="259" y="336" width="100" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="V6V-Ca-Wih"/>
+                                    <constraint firstAttribute="width" constant="100" id="nSV-lo-kHP"/>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5H4-M9-yoc" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="77.666666666666671" y="314" width="100.00000000000001" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="bn0-N7-OL4"/>
+                                    <constraint firstAttribute="width" constant="100" id="sQB-7p-sWA"/>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F6Q-R7-Iyc" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="217.66666666666666" y="44" width="24" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="aEK-ud-xPb"/>
+                                    <constraint firstAttribute="height" constant="34" id="dwD-pt-Blm"/>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdK-AQ-hnQ" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="217.66666666666666" y="44" width="24" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="NxB-T0-XXx"/>
+                                    <constraint firstAttribute="height" constant="34" id="dBK-R4-P4j"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfJ-H3-eZ0">
+                                <rect key="frame" x="217.66666666666666" y="44" width="24" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SWj-qH-tqB" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="252.66666666666663" y="741" width="24" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="7CP-kl-NLX"/>
+                                    <constraint firstAttribute="width" constant="24" id="jMD-L5-ZBf"/>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wdj-Li-uT7" customClass="PlayingCardView" customModule="Lards" customModuleProvider="target">
+                                <rect key="frame" x="252.66666666666663" y="741" width="24" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="16U-6P-RYJ"/>
+                                    <constraint firstAttribute="height" constant="34" id="F38-hb-1LS"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZOf-D5-xMi">
+                                <rect key="frame" x="252.66666666666663" y="741" width="24" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="K1W-rm-PWq" firstAttribute="bottom" secondItem="ghR-yw-ozA" secondAttribute="bottom" constant="20" id="4Xc-9s-NeZ"/>
-                            <constraint firstItem="LSi-5K-kTK" firstAttribute="centerX" secondItem="K1W-rm-PWq" secondAttribute="centerX" id="M1w-lS-vRZ"/>
-                            <constraint firstItem="LSi-5K-kTK" firstAttribute="centerY" secondItem="K1W-rm-PWq" secondAttribute="centerY" id="e3M-Hh-iiy"/>
-                            <constraint firstItem="ghR-yw-ozA" firstAttribute="centerX" secondItem="K1W-rm-PWq" secondAttribute="centerX" id="lRB-ib-IRG"/>
+                            <constraint firstItem="eNv-sR-IDM" firstAttribute="top" secondItem="K1W-rm-PWq" secondAttribute="top" id="2nl-9U-pEp"/>
+                            <constraint firstItem="4hd-Hq-mBo" firstAttribute="top" secondItem="eNv-sR-IDM" secondAttribute="bottom" constant="10" id="9H9-Am-joF"/>
+                            <constraint firstItem="Om2-n7-9lv" firstAttribute="centerY" secondItem="jWk-K8-r2e" secondAttribute="centerY" constant="46" id="Dyx-sY-W4h"/>
+                            <constraint firstItem="Wdj-Li-uT7" firstAttribute="leading" secondItem="Zni-dP-7lC" secondAttribute="trailing" constant="15" id="HLv-si-frk"/>
+                            <constraint firstItem="ZOf-D5-xMi" firstAttribute="top" secondItem="Wdj-Li-uT7" secondAttribute="top" id="MFk-Ey-ZBL"/>
+                            <constraint firstItem="lfJ-H3-eZ0" firstAttribute="trailing" secondItem="wdK-AQ-hnQ" secondAttribute="trailing" id="N6O-os-IqT"/>
+                            <constraint firstAttribute="centerY" secondItem="5H4-M9-yoc" secondAttribute="centerY" constant="22" id="QBm-U0-gub"/>
+                            <constraint firstItem="lfJ-H3-eZ0" firstAttribute="leading" secondItem="wdK-AQ-hnQ" secondAttribute="leading" id="Tkd-5R-wtA"/>
+                            <constraint firstItem="F6Q-R7-Iyc" firstAttribute="centerY" secondItem="eNv-sR-IDM" secondAttribute="centerY" id="U3Y-Q9-jLH"/>
+                            <constraint firstItem="K1W-rm-PWq" firstAttribute="trailing" secondItem="nOQ-UT-OT5" secondAttribute="trailing" constant="16" id="Uek-o3-ttf"/>
+                            <constraint firstItem="Zni-dP-7lC" firstAttribute="centerX" secondItem="jWk-K8-r2e" secondAttribute="centerX" id="VsO-Yt-aKS"/>
+                            <constraint firstAttribute="centerX" secondItem="5H4-M9-yoc" secondAttribute="trailing" constant="10" id="WeS-E2-vrV"/>
+                            <constraint firstItem="lfJ-H3-eZ0" firstAttribute="bottom" secondItem="wdK-AQ-hnQ" secondAttribute="bottom" id="Xy1-5E-pNm"/>
+                            <constraint firstItem="SWj-qH-tqB" firstAttribute="leading" secondItem="Zni-dP-7lC" secondAttribute="trailing" constant="15" id="YIC-gB-shL"/>
+                            <constraint firstItem="lfJ-H3-eZ0" firstAttribute="top" secondItem="wdK-AQ-hnQ" secondAttribute="top" id="YiS-Lg-PNY"/>
+                            <constraint firstItem="Wdj-Li-uT7" firstAttribute="centerY" secondItem="Zni-dP-7lC" secondAttribute="bottom" id="dHm-Zi-jTO"/>
+                            <constraint firstItem="F6Q-R7-Iyc" firstAttribute="leading" secondItem="eNv-sR-IDM" secondAttribute="trailing" constant="15" id="e83-Ic-0em"/>
+                            <constraint firstItem="4hd-Hq-mBo" firstAttribute="centerX" secondItem="jWk-K8-r2e" secondAttribute="centerX" id="eh5-Lc-oXa"/>
+                            <constraint firstItem="wdK-AQ-hnQ" firstAttribute="leading" secondItem="eNv-sR-IDM" secondAttribute="trailing" constant="15" id="l2q-iJ-3Su"/>
+                            <constraint firstItem="ZOf-D5-xMi" firstAttribute="bottom" secondItem="Wdj-Li-uT7" secondAttribute="bottom" id="mAM-nt-pJo"/>
+                            <constraint firstItem="ZOf-D5-xMi" firstAttribute="leading" secondItem="Wdj-Li-uT7" secondAttribute="leading" id="pfE-Wv-Hmc"/>
+                            <constraint firstItem="K1W-rm-PWq" firstAttribute="bottom" secondItem="Zni-dP-7lC" secondAttribute="bottom" constant="20" id="ru0-CJ-zHa"/>
+                            <constraint firstItem="Om2-n7-9lv" firstAttribute="leading" secondItem="jWk-K8-r2e" secondAttribute="centerX" constant="10" id="sIZ-6Z-6py"/>
+                            <constraint firstItem="wdK-AQ-hnQ" firstAttribute="centerY" secondItem="eNv-sR-IDM" secondAttribute="centerY" id="sbP-e6-iRg"/>
+                            <constraint firstItem="SWj-qH-tqB" firstAttribute="centerY" secondItem="Zni-dP-7lC" secondAttribute="bottom" id="uO9-Wg-hOL"/>
+                            <constraint firstItem="ZOf-D5-xMi" firstAttribute="trailing" secondItem="Wdj-Li-uT7" secondAttribute="trailing" id="v8E-jz-DTo"/>
+                            <constraint firstItem="nOQ-UT-OT5" firstAttribute="centerY" secondItem="jWk-K8-r2e" secondAttribute="centerY" id="w3t-H1-8hS"/>
+                            <constraint firstItem="eNv-sR-IDM" firstAttribute="centerX" secondItem="jWk-K8-r2e" secondAttribute="centerX" id="zUa-mx-I3M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K1W-rm-PWq"/>
                     </view>
                     <navigationItem key="navigationItem" id="snZ-WL-wac"/>
                     <connections>
-                        <outlet property="deckView" destination="ghR-yw-ozA" id="dPx-B9-oar"/>
-                        <outlet property="myCard" destination="d4O-xQ-9jM" id="Nzx-W2-pqL"/>
-                        <outlet property="theirCard" destination="gvq-rM-haq" id="cBW-5Y-NfQ"/>
+                        <outlet property="SBdealDeckPlaceholder" destination="nOQ-UT-OT5" id="OGC-vP-Zpe"/>
+                        <outlet property="SBlocalPlayerCardCounterBottomCard" destination="SWj-qH-tqB" id="sO0-Fb-FjW"/>
+                        <outlet property="SBlocalPlayerCardCounterLabel" destination="ZOf-D5-xMi" id="xKb-uU-6xh"/>
+                        <outlet property="SBlocalPlayerDeckPlaceholder" destination="Zni-dP-7lC" id="qz1-dV-6GC"/>
+                        <outlet property="SBlocalPlayerPlayedCardPlaceholder" destination="Om2-n7-9lv" id="qEv-5F-l8d"/>
+                        <outlet property="SBopponentCardCounterBottomCard" destination="F6Q-R7-Iyc" id="5qg-dd-UU2"/>
+                        <outlet property="SBopponentCardCounterLabel" destination="lfJ-H3-eZ0" id="iMN-pu-Il3"/>
+                        <outlet property="SBopponentDeckPlaceholder" destination="4hd-Hq-mBo" id="xir-dH-aVk"/>
+                        <outlet property="SBopponentPlayedCardPlaceholder" destination="5H4-M9-yoc" id="F5j-Ka-puH"/>
+                        <outlet property="SBopposingPlayerButton" destination="eNv-sR-IDM" id="Wkk-8a-IZ5"/>
+                        <segue destination="XDa-Om-PYF" kind="unwind" identifier="backToMenu" unwindAction="backToMainMenu:" id="qIR-Wr-Itw"/>
+                        <segue destination="XDa-Om-PYF" kind="unwind" identifier="backToRejoin" unwindAction="backToRejoin:" id="KG4-zf-ohD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Olu-Xi-1wn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="XDa-Om-PYF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1417" y="2229"/>
+            <point key="canvasLocation" x="1415.625" y="2225.7042253521126"/>
         </scene>
         <!--Joining Game View Controller-->
         <scene sceneID="aWe-1A-FME">
             <objects>
                 <viewController id="TVb-GJ-XrJ" customClass="JoiningGameViewController" customModule="Lards" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="msu-S9-u3N">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Y9B-Dr-mR6">
-                                <rect key="frame" x="0.0" y="56" width="375" height="702"/>
+                                <rect key="frame" x="0.0" y="56" width="320" height="404"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playerCell" textLabel="E3C-FZ-gzD" detailTextLabel="e4O-BM-dZI" style="IBUITableViewCellStyleValue1" id="ySY-fq-kiu">
-                                        <rect key="frame" x="15" y="55.333332061767578" width="345" height="43.666667938232422"/>
+                                        <rect key="frame" x="15" y="55.5" width="290" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ySY-fq-kiu" id="hMO-ql-1Qw">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="290" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E3C-FZ-gzD">
-                                                    <rect key="frame" x="15" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e4O-BM-dZI">
-                                                    <rect key="frame" x="286" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                                    <rect key="frame" x="231" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -556,16 +680,16 @@ Lards</string>
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="tBi-mp-SoQ">
-                                <rect key="frame" x="20" y="304.66666666666669" width="335" height="115"/>
+                                <rect key="frame" x="20" y="172.5" width="280" height="115"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRm-4F-VWn">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="48"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Y70-yc-8jf">
-                                        <rect key="frame" x="149" y="78" width="37" height="37"/>
+                                        <rect key="frame" x="121.5" y="78" width="37" height="37"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <constraints>
@@ -574,13 +698,13 @@ Lards</string>
                                 </constraints>
                             </stackView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OfB-Fh-6pT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
                                 <items>
                                     <navigationItem title="Finding Games" id="rmh-Oo-b0Q"/>
                                 </items>
                             </navigationBar>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="uT3-mo-ERp">
-                                <rect key="frame" x="335" y="18" width="20" height="20"/>
+                                <rect key="frame" x="280" y="18" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -664,6 +788,7 @@ Lards</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8aF-gr-7sE"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Eg6-bE-2TD"/>
                     <connections>
                         <outlet property="navBar" destination="YWD-nV-KHm" id="gXi-DQ-SIi"/>
                         <outlet property="tableView" destination="3Jb-MG-HBt" id="skd-Wd-5gV"/>
@@ -720,6 +845,10 @@ Lards</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="l8h-oA-jza"/>
+        <segue reference="4de-9O-T5D"/>
+        <segue reference="tUI-D1-poz"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="icon" width="1024" height="1024"/>
+    </resources>
 </document>

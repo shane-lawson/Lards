@@ -9,6 +9,7 @@
 import CoreData
 import Foundation
 
+// CoreData DataController class, singleton
 class DataController {
    static let shared = DataController(modelName: "Lards")
    

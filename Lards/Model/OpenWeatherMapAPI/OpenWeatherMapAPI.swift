@@ -15,7 +15,6 @@ class OpenWeatherMapAPI {
       
       var stringValue: String {
          switch self {
-         
          case .currentWeather(let lat, let long):
             return "https://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(long)&appid=\(Auth.key)"
          }

@@ -1,32 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="LardGame" representedClassName="LardGame" syncable="YES" codeGenerationType="class">
         <attribute name="displayName" optional="YES" attributeType="String"/>
         <attribute name="isComplete" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isCreator" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="creator" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="createdGame" inverseEntity="Player"/>
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PlayingCardDeck" inverseName="game" inverseEntity="PlayingCardDeck"/>
         <relationship name="localPlayer" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Player" inverseName="localGame" inverseEntity="Player"/>
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Player" inverseName="game" inverseEntity="Player"/>
     </entity>
     <entity name="Player" representedClassName="Player" syncable="YES" codeGenerationType="class">
-        <attribute name="peerID" optional="YES" attributeType="Transformable" valueTransformerName=""/>
+        <attribute name="color" optional="YES" attributeType="Transformable"/>
+        <attribute name="peerIDData" optional="YES" attributeType="Binary"/>
+        <relationship name="createdGame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LardGame" inverseName="creator" inverseEntity="LardGame"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LardGame" inverseName="players" inverseEntity="LardGame"/>
-        <relationship name="hand" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PlayingCard" inverseName="playerHand" inverseEntity="PlayingCard"/>
+        <relationship name="hand" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PlayingCard" inverseName="playerHand" inverseEntity="PlayingCard"/>
         <relationship name="localGame" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LardGame" inverseName="localPlayer" inverseEntity="LardGame"/>
     </entity>
     <entity name="PlayingCard" representedClassName="PlayingCard" syncable="YES" codeGenerationType="class">
-        <attribute name="rank" optional="YES" attributeType="Integer 64" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="suit" optional="YES" attributeType="Integer 64" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rankValue" optional="YES" attributeType="Integer 64" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="suitValue" optional="YES" attributeType="Integer 64" valueTransformerName="NSSecureUnarchiveFromData" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="deck" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayingCardDeck" inverseName="cards" inverseEntity="PlayingCardDeck"/>
         <relationship name="playerHand" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="hand" inverseEntity="Player"/>
     </entity>
     <entity name="PlayingCardDeck" representedClassName="PlayingCardDeck" syncable="YES" codeGenerationType="class">
-        <relationship name="cards" optional="YES" toMany="YES" maxCount="52" deletionRule="Cascade" destinationEntity="PlayingCard" inverseName="deck" inverseEntity="PlayingCard"/>
+        <relationship name="cards" optional="YES" toMany="YES" maxCount="52" deletionRule="Cascade" ordered="YES" destinationEntity="PlayingCard" inverseName="deck" inverseEntity="PlayingCard"/>
         <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LardGame" inverseName="deck" inverseEntity="LardGame"/>
     </entity>
     <elements>
-        <element name="LardGame" positionX="-414.34765625" positionY="-104.73046875" width="128" height="118"/>
+        <element name="LardGame" positionX="32.453125" positionY="123.94140625" width="128" height="148"/>
+        <element name="Player" positionX="-180" positionY="-99" width="128" height="133"/>
         <element name="PlayingCard" positionX="266.796875" positionY="-102.30078125" width="128" height="103"/>
         <element name="PlayingCardDeck" positionX="-26.6171875" positionY="-228.75390625" width="128" height="73"/>
-        <element name="Player" positionX="-180" positionY="-99" width="128" height="103"/>
     </elements>
 </model>

@@ -9,11 +9,12 @@
 import Foundation
 import MultipeerConnectivity
 
+// convenience class for accessing UserDefaults specific to this app, including archiving and unarchiving data (objects that are not natively supported in UserDefaults)
 class LardsUserDefaults {
    
    // enum so that mistyped string keys aren't an issue
    enum Keys: String {
-      case peerID, displayName, haptics, gestures, accentColor, hasLaunchedBefore
+      case peerID, displayName, haptics, accentColor, hasLaunchedBefore
    }
   
    // check for first launch (for use in AppDelegate) and initialise default values
@@ -24,7 +25,6 @@ class LardsUserDefaults {
          archiveAndSet(peerID: MCPeerID(displayName: UIDevice.current.name))
          UserDefaults.standard.set(UIDevice.current.name, forKey: Keys.displayName.rawValue)
          UserDefaults.standard.set(true, forKey: Keys.haptics.rawValue)
-         UserDefaults.standard.set(true, forKey: Keys.gestures.rawValue)
          archiveAndSet(color: UIColor.systemBlue)
          UserDefaults.standard.synchronize()
       }
@@ -67,21 +67,12 @@ class LardsUserDefaults {
       }
    }
    
-   static var gestures: Bool {
-      get {
-         return UserDefaults.standard.bool(forKey: Keys.gestures.rawValue)
-      }
-      set(newValue) {
-         UserDefaults.standard.set(newValue, forKey: Keys.gestures.rawValue)
-      }
-   }
-   
    static var haptics: Bool {
       get {
-         return UserDefaults.standard.bool(forKey: Keys.gestures.rawValue)
+         return UserDefaults.standard.bool(forKey: Keys.haptics.rawValue)
       }
       set(newValue) {
-         UserDefaults.standard.set(newValue, forKey: Keys.gestures.rawValue)
+         UserDefaults.standard.set(newValue, forKey: Keys.haptics.rawValue)
       }
    }
 

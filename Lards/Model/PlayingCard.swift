@@ -8,8 +8,9 @@
 
 import Foundation
 
+// non-CoreData PlayingCard model object and associated objects
 enum Rank: Int64, Codable, CaseIterable {
-   case ace = 1, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king
+   case two = 2, three, four, five, six, seven, eight, nine, ten, jack, queen, king, ace
    
    var string: String {
       switch self {
@@ -64,6 +65,11 @@ struct LGPlayingCard: Codable, CustomStringConvertible {
       }
       self.rank = Rank(rawValue: 14)!
       self.suit = Suit(rawValue: 5)!
+   }
+   
+   init(from card: PlayingCard) {
+      self.rank = card.rank
+      self.suit = card.suit
    }
    
    var description: String {

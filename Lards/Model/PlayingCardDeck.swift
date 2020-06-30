@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// non-CoreData PlayingCardDeck model object
+// used to encode a deck to broadcast to other players (so all players have the same deck) where it's converted into a CoreData PlayingCardDeck on receipt
 class LGPlayingCardDeck: Codable, CustomStringConvertible {
    var cards = [LGPlayingCard]()
    
@@ -17,6 +19,14 @@ class LGPlayingCardDeck: Codable, CustomStringConvertible {
          Rank.allCases.forEach { rank in
             cards.append(LGPlayingCard(rank, suit))
          }
+      }
+   }
+   
+   init(_ deck: PlayingCardDeck) {
+      deck.cards!.forEach { card in
+         let playingCard = card as! PlayingCard
+         let lgPlayingCard = LGPlayingCard(playingCard.rank, playingCard.suit)
+         self.cards.append(lgPlayingCard)
       }
    }
    

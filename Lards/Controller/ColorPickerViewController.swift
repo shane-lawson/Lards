@@ -9,8 +9,13 @@
 import UIKit
 
 class ColorPickerViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+   
+   // MARK: IBOutlets
+   
    @IBOutlet weak var pickerView: UIPickerView!
    @IBOutlet weak var navBar: UINavigationItem!
+   
+   // MARK: Properties
    
    let colors: [UIColor] = [
       .systemBlue,
@@ -40,6 +45,8 @@ class ColorPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
    
    lazy var selectedColor: UIColor = globalColor
    
+   // MARK: Overrides
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
@@ -53,6 +60,8 @@ class ColorPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
       pickerView.selectRow(colors.firstIndex{$0 == globalColor}!, inComponent: 0, animated: false)
    }
    
+   // MARK: BarButton Actions
+   
    @objc func cancel() {
       dismiss(animated: true, completion: nil)
    }
@@ -60,18 +69,7 @@ class ColorPickerViewController: UIViewController, UIPickerViewDelegate, UIPicke
    @objc func done() {
       globalColor = selectedColor
       performSegue(withIdentifier: "backToSettings", sender: nil)
-//      dismiss(animated: true, completion: nil)
    }
-   
-   /*
-   // MARK: - Navigation
-
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      // Get the new view controller using segue.destination.
-      // Pass the selected object to the new view controller.
-   }
-   */
    
    // MARK: - UIPickerViewDelegate
    

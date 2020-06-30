@@ -21,10 +21,6 @@ class MenuButton: UIButton {
       sharedInit()
    }
    
-//   override func prepareForInterfaceBuilder() {
-//      sharedInit()
-//   }
-   
    override func draw(_ rect: CGRect) {
       layer.backgroundColor = self.tintColor.cgColor
    }

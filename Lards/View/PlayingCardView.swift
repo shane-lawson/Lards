@@ -8,6 +8,7 @@
 
 import UIKit
 
+// UIView for PlayingCard where custom drawing is done for the card face and back, including appropriate weather icons for weather-based, custom card backs
 class PlayingCardView: UIView {
 
    // MARK: Properties
@@ -15,6 +16,7 @@ class PlayingCardView: UIView {
    var rank: Rank = .two { didSet { setNeedsDisplay(); setNeedsLayout() } }
    var suit: Suit = .clubs { didSet { setNeedsDisplay(); setNeedsLayout() } }
    var isFaceUp: Bool = false { didSet { setNeedsDisplay(); setNeedsLayout() } }
+   var height: CGFloat = 140 { didSet { bounds.size.width = (5/7) * bounds.size.height; setNeedsDisplay(); setNeedsLayout() } }
    var willGetWeather: Bool = false
    static var weather: WeatherObject? = nil
    
@@ -43,25 +45,18 @@ class PlayingCardView: UIView {
       //set path of card
       let path = UIBezierPath(roundedRect: bounds.inset(by: UIEdgeInsets(top: 1.0, left: 1.0, bottom: 1.0, right: 1.0)), cornerRadius: cornerRadius)
       
-      //set border and fill colors or shaded card "shape" if none
-//      if rank == Rank.none {
-//         UIColor.black.withAlphaComponent(0.15).setFill()
-//         path.stroke()
-//         path.fill()
-//         return
-//      } else {
-         UIColor.gray.setStroke()
-         UIColor.white.setFill()
-//      }
+      //set border color and fill color
+      UIColor.gray.setStroke()
+      UIColor.white.setFill()
       
       path.stroke()
       path.fill()
       
       //draw card face or card back
       if isFaceUp {
-         //TODO: draw card face
+         //card face is mainly drawn using other UI objects.
+         //Face cards do not have custom artwork, and would stand out if non face cards had pips on them, so all cards only have corner labels
       } else {
-         //TODO: draw card back
          let backRect = CGRect(origin: bounds.origin.offsetBy(dx: cardBackBorderWidth, dy: cardBackBorderWidth), size: CGSize(width: bounds.width - 2*cardBackBorderWidth, height: bounds.height - 2*cardBackBorderWidth))
          let path = UIBezierPath(rect: backRect)
          LardsUserDefaults.tintColor.setFill()
@@ -103,8 +98,10 @@ class PlayingCardView: UIView {
    }
    
    func stopAnimatingWeatherIcon() {
-      configureWeatherIcon(weatherIcon)
       weatherIcon.layer.removeAllAnimations()
+      if PlayingCardView.weather == nil {
+         UIView.transition(with: weatherIcon, duration: 1, options: [.transitionCrossDissolve], animations: { self.weatherIcon.alpha = 0 })
+      }
    }
    
    // MARK: Helpers
@@ -181,6 +178,8 @@ class PlayingCardView: UIView {
          default:
             image = UIImage(systemName: weather.isDay ? "sun.max" : "moon")!
          }
+         
+         stopAnimatingWeatherIcon()
       } else {
          startAnimatingWeatherIcon()
       }
@@ -188,10 +187,17 @@ class PlayingCardView: UIView {
          imageView.image = image?.withTintColor(.white, renderingMode: .alwaysOriginal)
       })
       imageView.frame.size = cardBackIconSize
-      imageView.isHidden = isFaceUp //|| rank == Rank.none
+      imageView.isHidden = isFaceUp
    }
-}
+
+   func refresh(_ weather: WeatherObject?) {
+      PlayingCardView.weather = weather
+      setNeedsDisplay()
+      setNeedsLayout()
+   }
    
+}
+
 // MARK: - Constants
 
 extension PlayingCardView {
@@ -242,6 +248,23 @@ extension PlayingCardView {
    
    private var cardBackBorderWidth: CGFloat {
       return cornerRadius / 1.5
+   }
+}
+
+// MARK: - Animations
+
+extension PlayingCardView {
+   func move(to endPoint: CGPoint, duration: TimeInterval = 1, delay: TimeInterval = 0, options: UIView.AnimationOptions = [.curveEaseInOut], completion: ((Bool) -> Void)? = nil) {
+      DispatchQueue.main.async {
+         UIView.animate(
+            withDuration: duration,
+            delay: delay,
+            options: options,
+            animations: {
+               self.center = endPoint
+               self.isFaceUp = !self.isFaceUp
+         }, completion: completion)
+      }
    }
 }
 

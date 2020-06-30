@@ -26,6 +26,8 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    
    var selectedHost: String?
    
+   // MARK: Overrides
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
@@ -37,7 +39,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      game.subscribeToNotifications(of: [.foundHost, .addedPlayer], observer: self, selector: #selector(processNotifications(_:)))
+      game.subscribeToNotifications(of: [.foundHost, .addedPlayer], observer: self, selector: #selector(handleNotifications(_:)))
       game.startMultipeer(isCreating: false)
    }
    
@@ -47,9 +49,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
       game.stopMultipeer()
    }
    
-   @objc func cancel() {
-      dismiss(animated: true, completion: nil)
-   }
+   // MARK: UI Updates
 
    func setLoading(_ isLoading: Bool) {
       if isLoading {
@@ -62,7 +62,9 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
       playerTableView.isHidden = isLoading
    }
    
-   @objc func processNotifications(_ notification: Notification) {
+   // MARK: Notifications
+   
+   @objc func handleNotifications(_ notification: Notification) {
       typealias type = LGLardGame.NotificationType
       DispatchQueue.main.async { [unowned self] in
          switch notification.name {
@@ -78,11 +80,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
          }
       }
    }
-   
-   @objc func done() {
-      print("done tapped")
-   }
-   
+
    // MARK: - Navigation
 
    // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -108,7 +106,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return game.foundHosts.count
+      return game.foundHosts!.count
    }
    
    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -117,7 +115,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath)
-      cell.textLabel?.text = game.foundHosts[indexPath.row].displayName
+      cell.textLabel?.text = game.foundHosts![indexPath.row].displayName
       cell.detailTextLabel?.textColor = .systemGray2
       return cell
    }
@@ -126,7 +124,7 @@ class JoiningGameViewController: UIViewController, UITableViewDataSource, UITabl
    
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       if selectedHost == nil {
-         let peerID = game.foundHosts[indexPath.row]
+         let peerID = game.foundHosts![indexPath.row]
          game.joinHost(with: peerID)
          titleBarActivityIndicator.stopAnimating()
          tableView.cellForRow(at: indexPath)?.detailTextLabel?.text = "Request Sent"

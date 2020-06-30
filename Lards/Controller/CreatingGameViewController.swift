@@ -20,8 +20,8 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
    @IBOutlet weak var loadingLabel: UILabel!
    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
    @IBOutlet weak var playerTableView: UITableView!
-   
-   // MARK: Properties
+
+   // MARK: Overrides
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -35,7 +35,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      game.subscribeToNotifications(of: [.receivedRequest, .addedPlayer], observer: self, selector: #selector(processNotifications(_:)))
+      game.subscribeToNotifications(of: [.receivedRequest, .addedPlayer], observer: self, selector: #selector(handleNotifications(_:)))
       game.startMultipeer(isCreating: true)
    }
    
@@ -44,15 +44,23 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
       game.unsubscribeFromNotifications(self)
       game.stopMultipeer()
    }
-
+   
+   // MARK: BarButton Actions
+   
+   @objc func done() {
+      game.startGame()
+      performSegue(withIdentifier: "startGame", sender: nil)
+   }
+   
    @objc func cancel() {
       dismiss(animated: true, completion: nil)
    }
    
+   // MARK: UI Updates
+   
    func setupUI() {
-      navBar.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.done))
+      navBar.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.done))
       navBar.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancel))
-      
    }
 
    func setLoading(_ isLoading: Bool) {
@@ -61,7 +69,9 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
       playerTableView.isHidden = isLoading
    }
 
-   @objc func processNotifications(_ notification: Notification) {
+   // MARK: Notifications
+   
+   @objc func handleNotifications(_ notification: Notification) {
       typealias type = LGLardGame.NotificationType
       DispatchQueue.main.async { [unowned self] in
          switch notification.name {
@@ -76,11 +86,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
          print("received \(notification.name.rawValue) notification in CreatingGameViewController")
       }
    }
-   
-   @objc func done() {
-      game.startGame()
-      performSegue(withIdentifier: "startGame", sender: nil)
-   }
+
    
    // MARK: - Navigation
 
@@ -99,18 +105,15 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
    // MARK: - UITableViewDataSource
    
    func numberOfSections(in tableView: UITableView) -> Int {
-//      var sections = 0
-//      if !game.players.isEmpty { sections += 1 }
-//      if !game.joinRequests.isEmpty { sections += 1 }
       return 2
    }
    
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
       switch section {
       case 0:
-         return game.joinRequests.count
+         return game.joinRequests!.count
       case 1:
-         return game.joinedPlayers.count
+         return game.joinedPlayers!.count
       default:
          return 0
       }
@@ -133,13 +136,15 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
       return cell
    }
    
+   // MARK: Helpers
+   
    func displayName(at indexPath: IndexPath) -> String {
       switch indexPath.section {
       case 0:
-         let keys = game.joinRequests.keys.map { $0 }
-         return keys[indexPath.row].displayName
+         let keys = game.joinRequests?.keys.map { $0 }
+         return keys![indexPath.row].displayName
       case 1:
-         return game.joinedPlayers[indexPath.row].displayName
+         return game.joinedPlayers![indexPath.row].displayName
       default:
          fatalError("section does not exist")
       }
@@ -161,7 +166,7 @@ class CreatingGameViewController: UIViewController, UITableViewDataSource, UITab
    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       switch indexPath.section {
       case 0:
-         let keys = game.joinRequests.keys.map { $0 }
+         let keys = game.joinRequests!.keys.map { $0 }
          if game.addPlayer(with: keys[indexPath.row]) {
             tableView.reloadData()
          }

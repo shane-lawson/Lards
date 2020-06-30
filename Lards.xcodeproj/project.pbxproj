@@ -24,17 +24,16 @@
 		343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA22C246C6AF6004D88D9 /* LoadGameViewController.swift */; };
 		343EA22F246C6B19004D88D9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA22E246C6B18004D88D9 /* SettingsViewController.swift */; };
 		343EA231246C724D004D88D9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA230246C724D004D88D9 /* GameViewController.swift */; };
-		343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA232246C7262004D88D9 /* ScoringViewController.swift */; };
 		343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */; };
 		3443CC33246C752700BD63C7 /* LardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3443CC32246C752700BD63C7 /* LardGame.swift */; };
 		345054482476EC2A00D60574 /* LardPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345054472476EC2A00D60574 /* LardPacket.swift */; };
-		34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34650C79247838860056FB14 /* UIView+Animations.swift */; };
+		346591F92482194800C4650D /* PlayingCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346591F82482194800C4650D /* PlayingCard+Extensions.swift */; };
+		346591FB2482242400C4650D /* Player+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346591FA2482242400C4650D /* Player+Extensions.swift */; };
 		348C6A55247F0FD9002ED524 /* PlayingCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */; };
 		348C6A5C247F1957002ED524 /* CardPlayedPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A59247F1957002ED524 /* CardPlayedPayload.swift */; };
 		348C6A5E247F6E43002ED524 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A5D247F6E43002ED524 /* DataController.swift */; };
 		348C6A6024802157002ED524 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C6A5F24802156002ED524 /* ColorPickerViewController.swift */; };
 		34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */; };
-		34CFEA132481EF9B008ED284 /* MCPeerIDToData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CFEA122481EF9B008ED284 /* MCPeerIDToData.swift */; };
 		34CFEA1F24820F9E008ED284 /* PlayingCardDeck+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CFEA1E24820F9E008ED284 /* PlayingCardDeck+Extensions.swift */; };
 		34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */; };
 		34E0F730247D968E00F63D9F /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 34E0F72F247D968E00F63D9F /* Keys.plist */; };
@@ -62,17 +61,16 @@
 		343EA22C246C6AF6004D88D9 /* LoadGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadGameViewController.swift; sourceTree = "<group>"; };
 		343EA22E246C6B18004D88D9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		343EA230246C724D004D88D9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		343EA232246C7262004D88D9 /* ScoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringViewController.swift; sourceTree = "<group>"; };
 		343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGameViewController.swift; sourceTree = "<group>"; };
 		3443CC32246C752700BD63C7 /* LardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardGame.swift; sourceTree = "<group>"; };
 		345054472476EC2A00D60574 /* LardPacket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardPacket.swift; sourceTree = "<group>"; };
-		34650C79247838860056FB14 /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		346591F82482194800C4650D /* PlayingCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayingCard+Extensions.swift"; sourceTree = "<group>"; };
+		346591FA2482242400C4650D /* Player+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+Extensions.swift"; sourceTree = "<group>"; };
 		348C6A54247F0FD9002ED524 /* PlayingCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardDeck.swift; sourceTree = "<group>"; };
 		348C6A59247F1957002ED524 /* CardPlayedPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPlayedPayload.swift; sourceTree = "<group>"; };
 		348C6A5D247F6E43002ED524 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		348C6A5F24802156002ED524 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
 		34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LardsUserDefaults.swift; sourceTree = "<group>"; };
-		34CFEA122481EF9B008ED284 /* MCPeerIDToData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPeerIDToData.swift; sourceTree = "<group>"; };
 		34CFEA1E24820F9E008ED284 /* PlayingCardDeck+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayingCardDeck+Extensions.swift"; sourceTree = "<group>"; };
 		34E0F729247D67E900F63D9F /* Lards.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Lards.xcdatamodel; sourceTree = "<group>"; };
 		34E0F72F247D968E00F63D9F /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 				3410FBE92475B437001E20B6 /* JoiningGameViewController.swift */,
 				343EA213246C5EC5004D88D9 /* MainMenuViewController.swift */,
 				343EA230246C724D004D88D9 /* GameViewController.swift */,
-				343EA232246C7262004D88D9 /* ScoringViewController.swift */,
 				343EA234246C72FE004D88D9 /* CreatingGameViewController.swift */,
 				343EA22A246C6AED004D88D9 /* NewGameViewController.swift */,
 				343EA22C246C6AF6004D88D9 /* LoadGameViewController.swift */,
@@ -146,7 +143,6 @@
 				343EA226246C5F9A004D88D9 /* MenuButton.swift */,
 				343EA228246C6086004D88D9 /* ViewConstants.swift */,
 				343EA215246C5EC5004D88D9 /* Main.storyboard */,
-				34650C79247838860056FB14 /* UIView+Animations.swift */,
 				343EA21D246C5EC7004D88D9 /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -155,10 +151,9 @@
 		343EA238246C7359004D88D9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				34CFEA1D24820F78008ED284 /* Managed Object Extensions */,
-				34CFEA112481EF50008ED284 /* Transfomers */,
-				348C6A56247F1947002ED524 /* Transmit Objects */,
 				34E0F728247D67E900F63D9F /* Lards.xcdatamodeld */,
+				34CFEA1D24820F78008ED284 /* Managed Object Extensions */,
+				348C6A56247F1947002ED524 /* Transmit Objects */,
 				34E0F733247D9AE600F63D9F /* OpenWeatherMapAPI */,
 				3443CC32246C752700BD63C7 /* LardGame.swift */,
 				34C18F32247ED86B00DA24A7 /* LardsUserDefaults.swift */,
@@ -178,18 +173,12 @@
 			path = "Transmit Objects";
 			sourceTree = "<group>";
 		};
-		34CFEA112481EF50008ED284 /* Transfomers */ = {
-			isa = PBXGroup;
-			children = (
-				34CFEA122481EF9B008ED284 /* MCPeerIDToData.swift */,
-			);
-			path = Transfomers;
-			sourceTree = "<group>";
-		};
 		34CFEA1D24820F78008ED284 /* Managed Object Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				34CFEA1E24820F9E008ED284 /* PlayingCardDeck+Extensions.swift */,
+				346591F82482194800C4650D /* PlayingCard+Extensions.swift */,
+				346591FA2482242400C4650D /* Player+Extensions.swift */,
 			);
 			path = "Managed Object Extensions";
 			sourceTree = "<group>";
@@ -279,9 +268,9 @@
 				343EA231246C724D004D88D9 /* GameViewController.swift in Sources */,
 				3443CC33246C752700BD63C7 /* LardGame.swift in Sources */,
 				343EA235246C72FE004D88D9 /* CreatingGameViewController.swift in Sources */,
-				343EA233246C7262004D88D9 /* ScoringViewController.swift in Sources */,
 				34C18F33247ED86B00DA24A7 /* LardsUserDefaults.swift in Sources */,
 				343EA22D246C6AF6004D88D9 /* LoadGameViewController.swift in Sources */,
+				346591F92482194800C4650D /* PlayingCard+Extensions.swift in Sources */,
 				343EA229246C6086004D88D9 /* ViewConstants.swift in Sources */,
 				34E0F732247D9ADE00F63D9F /* OpenWeatherMapAPI.swift in Sources */,
 				343EA22B246C6AED004D88D9 /* NewGameViewController.swift in Sources */,
@@ -289,13 +278,12 @@
 				343EA214246C5EC5004D88D9 /* MainMenuViewController.swift in Sources */,
 				348C6A6024802157002ED524 /* ColorPickerViewController.swift in Sources */,
 				348C6A5E247F6E43002ED524 /* DataController.swift in Sources */,
-				34650C7A247838860056FB14 /* UIView+Animations.swift in Sources */,
 				34CFEA1F24820F9E008ED284 /* PlayingCardDeck+Extensions.swift in Sources */,
 				3410FBEA2475B437001E20B6 /* JoiningGameViewController.swift in Sources */,
 				343EA227246C5F9A004D88D9 /* MenuButton.swift in Sources */,
 				348C6A55247F0FD9002ED524 /* PlayingCardDeck.swift in Sources */,
-				34CFEA132481EF9B008ED284 /* MCPeerIDToData.swift in Sources */,
 				345054482476EC2A00D60574 /* LardPacket.swift in Sources */,
+				346591FB2482242400C4650D /* Player+Extensions.swift in Sources */,
 				340D24CA2476FA26009A3227 /* PlayingCardView.swift in Sources */,
 				34E0F72A247D67E900F63D9F /* Lards.xcdatamodeld in Sources */,
 				343EA210246C5EC5004D88D9 /* AppDelegate.swift in Sources */,

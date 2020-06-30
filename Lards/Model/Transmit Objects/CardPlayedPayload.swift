@@ -15,7 +15,7 @@ struct CardPlayedPayload: Codable {
    
    init(_ card: LGPlayingCard, player: Player) {
       self.card = card
-      self.archivedPlayer = try! NSKeyedArchiver.archivedData(withRootObject: player.peerID!, requiringSecureCoding: false)
+      self.archivedPlayer = try! NSKeyedArchiver.archivedData(withRootObject: player.peerID, requiringSecureCoding: false)
    }
    
    init(from data: Data) {
@@ -27,6 +27,7 @@ struct CardPlayedPayload: Codable {
       } catch {
          print("Error decoding as PlayingCardDeck: \(error.localizedDescription)")
       }
+      // ideally should reach here, but needed to stop compiler errors
       self.card = LGPlayingCard(Rank(rawValue: 14)!,Suit(rawValue: 5)!)
       self.archivedPlayer = Data()
    }
